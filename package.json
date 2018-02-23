@@ -11,15 +11,21 @@
     "react-router-dom": "^4.2.2",
     "webpack": "^3.11.0"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch",
+    "postinstall": "webpack"
+  },
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
