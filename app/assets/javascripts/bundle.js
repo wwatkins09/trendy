@@ -27600,7 +27600,21 @@ var App = function App(props) {
   return _react2.default.createElement(
     'div',
     null,
-    'App!!'
+    _react2.default.createElement(
+      'p',
+      null,
+      'TRENDY APP CURRENTLY UNDER CONSTRUCTION'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'HARD HAT ZONE'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'DO NOT ENTER'
+    )
   );
 };
 
