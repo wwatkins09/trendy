@@ -27789,12 +27789,23 @@ var SignIn = function (_React$Component) {
   }
 
   _createClass(SignIn, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
-        'SIGN IN'
+        _react2.default.createElement(
+          "h1",
+          null,
+          "Sign In"
+        ),
+        _react2.default.createElement("input", { type: "email", placeholder: "Email" }),
+        _react2.default.createElement("input", { type: "password", placeholder: "Password" }),
+        _react2.default.createElement(
+          "button",
+          null,
+          "Submit"
+        )
       );
     }
   }]);
