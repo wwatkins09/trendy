@@ -2,6 +2,7 @@ import * as APISessionUtil from '../util/api_session_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
 
 export const signIn = (credentials) => {
   return (dispatch) => {
@@ -13,10 +14,24 @@ export const signIn = (credentials) => {
   }
 }
 
+export const signOut = () => {
+  return (dispatch) => {
+    return APISessionUtil.destroySession().then(() => {
+      dispatch(removeCurrentUser())
+    })
+  }
+}
+
 export const receiveCurrentUser = (user) => {
   return {
     type: RECEIVE_CURRENT_USER,
     user
+  };
+};
+
+export const removeCurrentUser = () => {
+  return {
+    type: REMOVE_CURRENT_USER
   };
 };
 
