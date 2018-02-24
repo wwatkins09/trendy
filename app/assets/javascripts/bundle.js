@@ -27710,11 +27710,18 @@ exports.default = (0, _redux.combineReducers)({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _session_actions = __webpack_require__(141);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments[1];
 
   switch (action.type) {
+    case _session_actions.RECEIVE_CURRENT_USER:
+      return Object.assign({}, oldState, _defineProperty({}, action.user.id, action.user));
     default:
       return oldState;
   }
@@ -27814,6 +27821,76 @@ var SignIn = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = SignIn;
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.receiveSessionErrors = exports.receiveCurrentUser = exports.signIn = exports.RECEIVE_SESSION_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
+
+var _api_session_util = __webpack_require__(142);
+
+var APISessionUtil = _interopRequireWildcard(_api_session_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+
+var signIn = exports.signIn = function signIn(credentials) {
+  return function (dispatch) {
+    return APISessionUtil.createSession(credentials).then(function (user) {
+      dispatch(receiveCurrentUser(user));
+    }, function (errors) {
+      dispatch(receiveSessionErrors(errors.responseJSON));
+    });
+  };
+};
+
+var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUser(user) {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    user: user
+  };
+};
+
+var receiveSessionErrors = exports.receiveSessionErrors = function receiveSessionErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var createSession = exports.createSession = function createSession(credentials) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/session',
+    data: { credentials: credentials }
+  });
+};
+
+var destroySession = exports.destroySession = function destroySession() {
+  return $.ajax({
+    method: 'DELETE',
+    url: 'api/session'
+  });
+};
 
 /***/ })
 /******/ ]);
