@@ -2,25 +2,25 @@ import React from 'react';
 import {Route, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-const Auth = ({component: Component, path, loggedIn}) => {
+const Auth = ({component: Component, path, loggedIn, currentUserId}) => {
   return (
     <Route path={path} render={(props) => (
         !loggedIn ? (
           <Component {...props}/>
         ) : (
-          <Redirect to="/" />
+          <Redirect to={`/users/${currentUserId}`} />
         )
       )}/>
   );
 };
 
-const Protected = ({component: Component, path, loggedIn, currentUserId}) => {
+const Protected = ({component: Component, path, loggedIn}) => {
   return (
     <Route path={path} render={(props) => (
         loggedIn ? (
           <Component {...props}/>
         ) : (
-          <Redirect to={`/users/${currentUserId}`} />
+          <Redirect to="/" />
         )
       )}/>
   );
