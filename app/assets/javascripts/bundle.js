@@ -27599,27 +27599,17 @@ var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _sign_in_container = __webpack_require__(139);
+
+var _sign_in_container2 = _interopRequireDefault(_sign_in_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(props) {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(
-      'p',
-      null,
-      'TRENDY APP CURRENTLY UNDER CONSTRUCTION'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'HARD HAT ZONE'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'DO NOT ENTER'
-    )
+    _react2.default.createElement(_sign_in_container2.default, null)
   );
 };
 
@@ -27731,6 +27721,88 @@ var usersReducer = function usersReducer() {
 };
 
 exports.default = usersReducer;
+
+/***/ }),
+/* 138 */,
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(70);
+
+var _reactRouterDom = __webpack_require__(107);
+
+var _sign_in = __webpack_require__(140);
+
+var _sign_in2 = _interopRequireDefault(_sign_in);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_sign_in2.default));
+
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignIn = function (_React$Component) {
+  _inherits(SignIn, _React$Component);
+
+  function SignIn(props) {
+    _classCallCheck(this, SignIn);
+
+    return _possibleConstructorReturn(this, (SignIn.__proto__ || Object.getPrototypeOf(SignIn)).call(this, props));
+  }
+
+  _createClass(SignIn, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'SIGN IN'
+      );
+    }
+  }]);
+
+  return SignIn;
+}(_react2.default.Component);
+
+exports.default = SignIn;
 
 /***/ })
 /******/ ]);

@@ -1,18 +1,10 @@
 import React from 'react';
+import SignInContainer from './sign_in/sign_in_container';
 
 const App = (props) => {
   return (
     <div>
-      <p>
-        TRENDY APP CURRENTLY UNDER CONSTRUCTION
-      </p>
-      <p>
-        HARD HAT ZONE
-      </p>
-      <p>
-        DO NOT ENTER
-      </p>
-
+      <SignInContainer />
     </div>
   );
 }
