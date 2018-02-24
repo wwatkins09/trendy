@@ -1,7 +1,7 @@
-export const createUser = (credentials) => {
+export const createUser = (user) => {
   return $.ajax({
     method: 'POST',
-    url: 'api/users'
-    data: credentials
+    url: 'api/users',
+    data: {user}
   })
 }
