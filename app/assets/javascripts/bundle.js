@@ -27694,10 +27694,15 @@ var _users_reducer = __webpack_require__(137);
 
 var _users_reducer2 = _interopRequireDefault(_users_reducer);
 
+var _session_reducer = __webpack_require__(143);
+
+var _session_reducer2 = _interopRequireDefault(_session_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  users: _users_reducer2.default
+  users: _users_reducer2.default,
+  session: _session_reducer2.default
 });
 
 /***/ }),
@@ -27891,6 +27896,37 @@ var destroySession = exports.destroySession = function destroySession() {
     url: 'api/session'
   });
 };
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _session_actions = __webpack_require__(141);
+
+var _nullUser = {
+  currentUserId: null
+};
+
+var sessionReducer = function sessionReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _session_actions.RECEIVE_CURRENT_USER:
+      return { currentUserId: action.user.id };
+    default:
+      return oldState;
+  }
+};
+
+exports.default = sessionReducer;
 
 /***/ })
 /******/ ]);
