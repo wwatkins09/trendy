@@ -18,9 +18,7 @@ class SignIn extends React.Component {
 
   handleSignIn(event) {
     event.preventDefault();
-    this.props.signIn(this.state).catch((errors) => {
-      console.log(errors);
-    });
+    this.props.signIn(this.state);
   }
 
   render() {
