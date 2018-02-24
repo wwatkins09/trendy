@@ -18,7 +18,9 @@ class SignIn extends React.Component {
 
   handleSignIn(event) {
     event.preventDefault();
-    this.props.signIn(this.state);
+    this.props.signIn(this.state).catch((errors) => {
+      console.log(errors);
+    });
   }
 
   render() {
@@ -27,7 +29,7 @@ class SignIn extends React.Component {
         <h1>Sign In</h1>
         <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleInput('email')}/>
         <input type="password" placeholder="Password" value={this.state.password} onChange={this.handleInput('password')}/>
-        <button>Submit</button>
+        <button onClick={this.handleSignIn}>Submit</button>
       </div>
     );
   }
