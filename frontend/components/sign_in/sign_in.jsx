@@ -27,7 +27,7 @@ class SignIn extends React.Component {
         <h1>Sign In</h1>
         <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleInput('email')}/>
         <input type="password" placeholder="Password" value={this.state.password} onChange={this.handleInput('password')}/>
-        <button onClick={this.handleSignIn}>Submit</button>
+        <button onClick={this.handleSignIn}>Sign in</button>
       </div>
     );
   }
