@@ -19,11 +19,13 @@ class SignIn extends React.Component {
 
   handleSignIn(event) {
     event.preventDefault();
+    this.setState({email: '', password: ''})
     this.props.signIn(this.state);
   }
 
   handleSignUp(event) {
     event.preventDefault();
+    this.setState({email: '', password: ''})
     this.props.signUp(this.state);
   }
 
