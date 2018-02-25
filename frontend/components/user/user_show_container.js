@@ -5,9 +5,13 @@ import {signOut} from '../../actions/session_actions';
 import {fetchEventsByUserId} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
+  const currentUser = state.users[state.session.currentUserId];
+  const events = currentUser.eventIds.map((eventId) => {
+    return state.events[eventId]
+  })
   return {
-    currentUser: state.users[state.session.currentUserId],
-    events: state.events
+    currentUser,
+    events
   };
 };
 

@@ -22,10 +22,23 @@ class UserShow extends React.Component {
   }
 
   render() {
+
+    const eventsList = this.props.events.map((event, idx) => {
+      if (event) {
+        return (
+          <li key={idx}>{event.category}</li>
+        );
+      }
+    });
+
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
+        <p>Your events:</p>
+        <ul>
+          {eventsList}
+        </ul>
       </div>
     )
   }
