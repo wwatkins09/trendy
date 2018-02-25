@@ -6,7 +6,8 @@ import {fetchEventsByUserId} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.users[state.session.currentUserId]
+    currentUser: state.users[state.session.currentUserId],
+    events: state.events
   };
 };
 

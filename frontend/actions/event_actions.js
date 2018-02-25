@@ -5,7 +5,7 @@ export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const fetchEventsByUserId = (userId) => {
   return (dispatch) => {
     return APIEventUtil.fetchEventsByUserId(userId).then((events) => {
-      return receiveEvents(events);
+      dispatch(receiveEvents(events));
     })
   }
 }
