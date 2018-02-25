@@ -1,2 +1,2 @@
 json.id event.id
-json.type event.type
+json.category event.category
