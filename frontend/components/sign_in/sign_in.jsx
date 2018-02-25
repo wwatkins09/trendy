@@ -28,6 +28,11 @@ class SignIn extends React.Component {
   }
 
   render() {
+
+    const errorsList = this.props.errors.map((error, idx) => {
+      return (<li key={idx}>{error}</li>)
+    })
+
     return (
       <div id="sign-in">
         <content id="sign-in-form">
@@ -39,6 +44,9 @@ class SignIn extends React.Component {
             <span className="session-button" onClick={this.handleSignIn}>Sign in</span>
             <span className="session-button" onClick={this.handleSignUp}>Sign up</span>
           </span>
+          <ul>
+            {errorsList}
+          </ul>
         </content>
       </div>
     );

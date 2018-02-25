@@ -6,7 +6,7 @@ import {signUp} from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
   return {
-
+    errors: state.errors
   };
 };
 
