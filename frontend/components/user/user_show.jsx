@@ -8,6 +8,14 @@ class UserShow extends React.Component {
     this.handleSignOut = this.handleSignOut.bind(this);
   }
 
+  componentDidMount() {
+    if (parseInt(this.props.match.params.userId) !== this.props.currentUser.id) {
+      this.props.history.push(`/users/${this.props.currentUser.id}`)
+    } else {
+      this.props.fetchEventsByUserId(this.props.currentUser.id)
+    }
+  }
+
   handleSignOut(event) {
     event.preventDefault();
     this.props.signOut();
