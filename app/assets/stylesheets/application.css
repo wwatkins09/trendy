@@ -41,13 +41,14 @@
   margin: 20px 0;
 }
 
-#sign-in-buttons * {
+.session-button {
   border: 1px solid black;
   padding: 0 5px;
   margin: 0 5px;
+  font-size: 14px;
 }
 
-#sign-in-buttons *:hover {
+.session-button:hover {
   cursor: pointer;
   color: blue;
   border: 1px solid blue;

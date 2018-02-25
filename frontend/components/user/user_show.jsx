@@ -16,8 +16,8 @@ class UserShow extends React.Component {
   render() {
     return (
       <div>
-        <h1>This is your profile page!</h1>
-        <button onClick={this.handleSignOut}>Sign out</button>
+        <h1>Welcome, {this.props.currentUser.email}</h1>
+        <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
       </div>
     )
   }

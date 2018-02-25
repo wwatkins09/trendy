@@ -36,8 +36,8 @@ class SignIn extends React.Component {
           <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleInput('email')}/>
           <input type="password" placeholder="Password" value={this.state.password} onChange={this.handleInput('password')}/>
           <span id="sign-in-buttons">
-            <span onClick={this.handleSignIn}>Sign in</span>
-            <span onClick={this.handleSignUp}>Sign up</span>
+            <span className="session-button" onClick={this.handleSignIn}>Sign in</span>
+            <span className="session-button" onClick={this.handleSignUp}>Sign up</span>
           </span>
         </content>
       </div>
