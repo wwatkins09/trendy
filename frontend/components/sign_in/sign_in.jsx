@@ -30,7 +30,7 @@ class SignIn extends React.Component {
   render() {
 
     const errorsList = this.props.errors.map((error, idx) => {
-      return (<li key={idx}>{error}</li>)
+      return (<li key={idx} className="error">{error}</li>)
     })
 
     return (
@@ -44,7 +44,7 @@ class SignIn extends React.Component {
             <span className="session-button" onClick={this.handleSignIn}>Sign in</span>
             <span className="session-button" onClick={this.handleSignUp}>Sign up</span>
           </span>
-          <ul>
+          <ul id="errors-list">
             {errorsList}
           </ul>
         </content>
