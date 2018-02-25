@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import UserShow from './user_show';
 import {signOut} from '../../actions/session_actions';
+import {fetchEventsByUserId} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    fetchEventsByUserId: (userId) => dispatch(fetchEventsByUserId(userId))
   };
 };
 
