@@ -3,6 +3,7 @@ import * as APISessionUtil from '../util/api_session_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const signIn = (credentials) => {
   return (dispatch) => {
@@ -41,3 +42,9 @@ export const receiveSessionErrors = (errors) => {
     errors
   };
 };
+
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
+  }
+}

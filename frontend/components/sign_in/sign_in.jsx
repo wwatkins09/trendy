@@ -11,6 +11,10 @@ class SignIn extends React.Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   handleInput(field) {
     return (event) => {
       this.setState({[field]: event.target.value});
@@ -20,13 +24,17 @@ class SignIn extends React.Component {
   handleSignIn(event) {
     event.preventDefault();
     this.setState({email: '', password: ''})
-    this.props.signIn(this.state);
+    this.props.signIn(this.state).then(() => {
+      this.props.clearErrors();
+    });
   }
 
   handleSignUp(event) {
     event.preventDefault();
     this.setState({email: '', password: ''})
-    this.props.signUp(this.state);
+    this.props.signUp(this.state).then(() => {
+      this.props.clearErrors();
+    });
   }
 
   render() {
