@@ -15,15 +15,40 @@
  */
 
 #sign-in {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+#sign-in-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 400px;
+  border: 1px solid black;
 }
 
-#sign-in input {
+#sign-in-form input {
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 #sign-in-buttons {
+  width: 150px;
   display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+#sign-in-buttons * {
+  border: 1px solid black;
+  padding: 0 5px;
+  margin: 0 5px;
+}
+
+#sign-in-buttons *:hover {
+  cursor: pointer;
+  color: blue;
+  border: 1px solid blue;
 }
