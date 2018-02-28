@@ -13,6 +13,7 @@ export const createEvent = (event) => {
     data: {
       event: {
         category: event.category,
+        date: event.date,
         user_id: event.userId,
         quantity: event.quantity,
         quality: event.quality,

@@ -4,7 +4,7 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {category: '', quantity: 0, quality: 0, duration: 0, date: new Date().setHours(0, 0, 0, 0), userId: this.props.currentUser.id}
+    this.state = {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000), userId: this.props.currentUser.id}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +36,7 @@ class UserShow extends React.Component {
   }
 
   handleDateChange(event) {
-    this.setState({date: new Date(event.target.value).getTime()})
+    this.setState({date: new Date(event.target.value).getTime() / 1000})
   }
 
   handleSubmit(event) {
