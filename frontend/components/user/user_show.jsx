@@ -4,7 +4,7 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {category: '', quantity: '', quality: '', duration: ''}
+    this.state = {category: '', quantity: 0, quality: 0, duration: 0, userId: this.props.currentUser.id}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -54,9 +54,9 @@ class UserShow extends React.Component {
         </ul>
         <form onSubmit={this.handleSubmit}>
           <input placeholder="category" onChange={this.handleChange('category')} value={this.state.category}></input>
-          <input placeholder="quantity" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
-          <input placeholder="quality" onChange={this.handleChange('quality')} value={this.state.quality}></input>
-          <input placeholder="duration" onChange={this.handleChange('duration')} value={this.state.duration}></input>
+          <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
+          <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.quality}></input>
+          <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.duration}></input>
           <button>Add event</button>
         </form>
       </div>
