@@ -4,7 +4,7 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {category: ''}
+    this.state = {category: '', quantity: '', quality: '', duration: ''}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +31,8 @@ class UserShow extends React.Component {
   }
 
   handleSubmit(event) {
-
+    event.preventDefault();
+    this.props.createEvent(this.state)
   }
 
   render() {
@@ -43,7 +44,6 @@ class UserShow extends React.Component {
         );
       }
     });
-
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
