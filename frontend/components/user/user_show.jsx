@@ -32,7 +32,9 @@ class UserShow extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createEvent(this.state)
+    this.props.createEvent(this.state).then(() => {
+      this.setState({category: '', quantity: 0, quality: 0, duration: 0})
+    })
   }
 
   render() {
