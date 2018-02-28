@@ -36,18 +36,38 @@ class UserShow extends React.Component {
   }
 
   handleDateChange(event) {
-    this.setState({date: new Date(event.target.value).getTime() / 1000})
+    const timezoneOffset = new Date().getTimezoneOffset();
+    this.setState({date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({category: '', quantity: 0, quality: 0, duration: 0})
+    this.setState({category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)})
     this.props.createEvent(this.state).then(() => {
       this.props.clearErrors();
     });
   }
 
+  formatDate(date) {
+    const dateString = new Date(date * 1000);
+    const year = dateString.getFullYear().toString();
+    let month;
+    if (dateString.getMonth() + 1 < 10) {
+      month = '0' + (dateString.getMonth() + 1).toString();
+    } else {
+      month = (dateString.getMonth() + 1).toString();
+    }
+    let day;
+    if (dateString.getDate() < 10) {
+      day = '0' + dateString.getDate().toString();
+    } else {
+      day = dateString.getDate().toString();
+    }
+    return year + '-' + month + '-' + day;
+  }
+
   render() {
+    console.log(this.state.date);
     const eventsList = this.props.events.map((event, idx) => {
       if (event) {
         return (
@@ -72,7 +92,7 @@ class UserShow extends React.Component {
             <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.category}></input>
           </label>
           <label>Date
-            <input type="date" onChange={this.handleChange('date')}></input>
+            <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.date)}></input>
           </label>
           <label>Quantity
             <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
