@@ -4,8 +4,10 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {category: ''}
 
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +21,10 @@ class UserShow extends React.Component {
   handleSignOut(event) {
     event.preventDefault();
     this.props.signOut();
+  }
+
+  handleSubmit(event) {
+
   }
 
   render() {
@@ -39,6 +45,13 @@ class UserShow extends React.Component {
         <ul>
           {eventsList}
         </ul>
+        <form onSubmit={this.handleSubmit}>
+          <input placeholder="category"></input>
+          <input placeholder="quantity"></input>
+          <input placeholder="quality"></input>
+          <input placeholder="duration"></input>
+          <button>Add event</button>
+        </form>
       </div>
     )
   }
