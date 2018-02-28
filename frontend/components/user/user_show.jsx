@@ -61,7 +61,7 @@ class UserShow extends React.Component {
         </ul>
         <form onSubmit={this.handleSubmit}>
           <label>Category
-            <input placeholder="category" onChange={this.handleChange('category')} value={this.state.category}></input>
+            <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.category}></input>
           </label>
           <label>Quantity
             <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
