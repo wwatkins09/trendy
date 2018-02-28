@@ -4,10 +4,11 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {category: '', quantity: 0, quality: 0, duration: 0, userId: this.props.currentUser.id}
+    this.state = {category: '', quantity: 0, quality: 0, duration: 0, date: new Date().setHours(0, 0, 0, 0), userId: this.props.currentUser.id}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,9 +26,17 @@ class UserShow extends React.Component {
   }
 
   handleChange(field) {
-    return (event) => {
-      this.setState({[field]: event.target.value})
+    if (field === 'date') {
+      return this.handleDateChange;
+    } else {
+      return (event) => {
+        this.setState({[field]: event.target.value})
+      }
     }
+  }
+
+  handleDateChange(event) {
+    this.setState({date: new Date(event.target.value).getTime()})
   }
 
   handleSubmit(event) {
@@ -39,7 +48,6 @@ class UserShow extends React.Component {
   }
 
   render() {
-
     const eventsList = this.props.events.map((event, idx) => {
       if (event) {
         return (
@@ -62,6 +70,9 @@ class UserShow extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>Category
             <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.category}></input>
+          </label>
+          <label>Date
+            <input type="date" onChange={this.handleChange('date')}></input>
           </label>
           <label>Quantity
             <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
