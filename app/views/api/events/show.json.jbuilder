@@ -4,6 +4,7 @@ json.event do
   json.quantity @event.quantity
   json.quality @event.quality
   json.duration @event.duration
+  json.date @event.date
 end
 
 json.user do

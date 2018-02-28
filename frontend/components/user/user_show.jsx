@@ -67,7 +67,6 @@ class UserShow extends React.Component {
   }
 
   render() {
-    console.log(this.state.date);
     const eventsList = this.props.events.map((event, idx) => {
       if (event) {
         return (
