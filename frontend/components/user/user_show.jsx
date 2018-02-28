@@ -7,6 +7,7 @@ class UserShow extends React.Component {
     this.state = {category: ''}
 
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,6 +22,12 @@ class UserShow extends React.Component {
   handleSignOut(event) {
     event.preventDefault();
     this.props.signOut();
+  }
+
+  handleChange(field) {
+    return (event) => {
+      this.setState({[field]: event.target.value})
+    }
   }
 
   handleSubmit(event) {
@@ -46,10 +53,10 @@ class UserShow extends React.Component {
           {eventsList}
         </ul>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="category"></input>
-          <input placeholder="quantity"></input>
-          <input placeholder="quality"></input>
-          <input placeholder="duration"></input>
+          <input placeholder="category" onChange={this.handleChange('category')} value={this.state.category}></input>
+          <input placeholder="quantity" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
+          <input placeholder="quality" onChange={this.handleChange('quality')} value={this.state.quality}></input>
+          <input placeholder="duration" onChange={this.handleChange('duration')} value={this.state.duration}></input>
           <button>Add event</button>
         </form>
       </div>
