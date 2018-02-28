@@ -13,8 +13,8 @@ export const fetchEventsByUserId = (userId) => {
 
 export const createEvent = (event) => {
   return (dispatch) => {
-    return APIEventUtil.createEvent(event).then((event) => {
-      dispatch(receiveEvent(event))
+    return APIEventUtil.createEvent(event).then((payload) => {
+      dispatch(receiveEvent(payload))
     })
   }
 }
@@ -26,9 +26,9 @@ export const receiveEvents = (events) => {
   }
 }
 
-export const receiveEvent = (event) => {
+export const receiveEvent = (payload) => {
   return {
     type: RECEIVE_EVENT,
-    event
+    payload
   }
 }
