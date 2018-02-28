@@ -54,7 +54,7 @@
   border: 1px solid blue;
 }
 
-#errors-list {
+.errors-list {
   width: 90%;
   height: 40px;
   padding: 0;

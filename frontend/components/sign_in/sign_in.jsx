@@ -54,7 +54,7 @@ class SignIn extends React.Component {
             <span className="session-button" onClick={this.handleSignIn}>Sign in</span>
             <span className="session-button" onClick={this.handleSignUp}>Sign up</span>
           </span>
-          <ul id="errors-list">
+          <ul className="errors-list">
             {errorsList}
           </ul>
         </content>

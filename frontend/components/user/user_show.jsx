@@ -33,7 +33,9 @@ class UserShow extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({category: '', quantity: 0, quality: 0, duration: 0})
-    this.props.createEvent(this.state);
+    this.props.createEvent(this.state).then(() => {
+      this.props.clearErrors();
+    });
   }
 
   render() {
@@ -45,6 +47,10 @@ class UserShow extends React.Component {
         );
       }
     });
+
+    const errorsList = this.props.errors.map((error, idx) => {
+      return (<li key={idx} className="error">{error}</li>);
+    })
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
@@ -54,12 +60,23 @@ class UserShow extends React.Component {
           {eventsList}
         </ul>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="category" onChange={this.handleChange('category')} value={this.state.category}></input>
-          <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
-          <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.quality}></input>
-          <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.duration}></input>
+          <label>Category
+            <input placeholder="category" onChange={this.handleChange('category')} value={this.state.category}></input>
+          </label>
+          <label>Quantity
+            <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
+          </label>
+          <label>Quality
+            <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.quality}></input>
+          </label>
+          <label>Duration
+            <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.duration}></input>
+          </label>
           <button>Add event</button>
         </form>
+        <ul className="errors-list">
+          {errorsList}
+        </ul>
       </div>
     )
   }
