@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import FiveDay from './five_day';
+import FiveDayIndex from './five_day_index';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FiveDay));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FiveDayIndex));
