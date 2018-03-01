@@ -10,15 +10,6 @@ export const createEvent = (event) => {
   return $.ajax({
     method: 'POST',
     url: 'api/events',
-    data: {
-      event: {
-        category: event.category,
-        date: event.date,
-        user_id: event.userId,
-        quantity: event.quantity,
-        quality: event.quality,
-        duration: event.duration
-      }
-    }
+    data: {event}
   });
 };

@@ -10,6 +10,7 @@ class Api::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
     @user = current_user
     if (@event.save)
       render 'api/events/show'

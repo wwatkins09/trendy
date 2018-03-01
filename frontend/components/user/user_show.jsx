@@ -4,7 +4,7 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000), userId: this.props.currentUser.id}}
+    this.state = {event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
