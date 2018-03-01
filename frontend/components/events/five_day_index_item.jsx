@@ -23,8 +23,14 @@ class FiveDayIndexItem extends React.Component {
     canvas.width = 30;
     canvas.height = 30;
     const ctx = canvas.getContext('2d');
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'lightgray';
     ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(15, 15, 10, 0, (Math.PI * 2), false);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.strokeStyle = 'blue';
+    ctx.beginPath();
     ctx.arc(15, 15, 10, (Math.PI * 1.5), ((Math.PI * 1.5) + (Math.PI * 2 * (this.props.events.length / 5))), false);
     ctx.stroke();
   }
