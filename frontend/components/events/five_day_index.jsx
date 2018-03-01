@@ -9,6 +9,10 @@ class FiveDay extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchEventsByUserId(this.props.currentUser.id)
+  }
+
   createDate(offset) {
     return new Date(new Date().setDate(new Date().getDate()-offset));
   }
