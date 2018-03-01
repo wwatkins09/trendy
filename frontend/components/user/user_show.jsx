@@ -125,7 +125,6 @@ class UserShow extends React.Component {
     const avgQuantity = this.findAvg(this.state.selectedCategory, 'quantity');
     const avgQuality = this.findAvg(this.state.selectedCategory, 'quality');
     const avgDuration = this.findAvg(this.state.selectedCategory, 'duration');
-    const link = (this.state.selectedCategory) ? (<Link to={`/events/${this.props.currentUser.id}/${this.state.selectCategory}`}>5 Day</Link>) : null;
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
@@ -159,7 +158,7 @@ class UserShow extends React.Component {
         <p>Average quantity: {avgQuantity}</p>
         <p>Average quality: {avgQuality}</p>
         <p>Average duration: {avgDuration}</p>
-        {link}
+        <Link to="/events/five-day">5 Day</Link>
       </div>
     )
   }

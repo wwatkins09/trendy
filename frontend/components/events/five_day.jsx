@@ -8,7 +8,9 @@ class FiveDay extends React.Component {
 
   render() {
     return (
-      <div>FIVE DAY</div>
+      <div>
+        
+      </div>
     )
   }
 }
