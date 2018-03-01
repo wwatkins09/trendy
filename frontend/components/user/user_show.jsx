@@ -95,17 +95,20 @@ class UserShow extends React.Component {
       return;
     }
     let count = 0;
-    let avg = 0;
+    let sum = 0;
     this.props.events.forEach((event) => {
       if (event.category !== category) {
         return;
       } else {
         count ++;
-        avg += event[field];
+        sum += event[field];
       }
     });
-    avg /= count;
-    return avg || 0;
+    if (count === 0) {
+      return 0;
+    } else {
+      return (sum / count).toFixed(2);
+    }
   }
 
   render() {
