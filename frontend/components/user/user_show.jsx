@@ -4,13 +4,14 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {selectedCategory: null, event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
+    this.state = {selectedCategory: null, quantity: 0, quality: 0, duration: 0, event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
+    this.findAvg = this.findAvg.bind(this);
   }
 
   componentDidMount() {
@@ -68,7 +69,43 @@ class UserShow extends React.Component {
   }
 
   selectCategory(event) {
-    this.setState({selectedCategory: event.target.innerHTML});
+    const selectedCategory = event.target.innerHTML;
+    let avgQuantity = 0;
+    let avgQuality = 0;
+    let avgDuration = 0;
+    let count = 0;
+    this.props.events.forEach((event) => {
+      if (event.category !== selectedCategory) {
+        return;
+      } else {
+        count++;
+        avgQuantity += event.quantity;
+        avgQuality += event.quality;
+        avgDuration += event.duration;
+      }
+    });
+    avgQuantity /= count;
+    avgQuality /= count;
+    avgDuration /= count;
+    this.setState({selectedCategory, avgQuantity, avgQuality, avgDuration});
+  }
+
+  findAvg(category, field) {
+    if (!this.props.events[0]) {
+      return;
+    }
+    let count = 0;
+    let avg = 0;
+    this.props.events.forEach((event) => {
+      if (event.category !== category) {
+        return;
+      } else {
+        count ++;
+        avg += event[field];
+      }
+    });
+    avg /= count;
+    return avg || 0;
   }
 
   render() {
@@ -81,6 +118,9 @@ class UserShow extends React.Component {
     const errorsList = this.props.errors.map((error, idx) => {
       return (<li key={idx} className="error">{error}</li>);
     })
+    const avgQuantity = this.findAvg(this.state.selectedCategory, 'quantity');
+    const avgQuality = this.findAvg(this.state.selectedCategory, 'quality');
+    const avgDuration = this.findAvg(this.state.selectedCategory, 'duration');
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
@@ -111,6 +151,9 @@ class UserShow extends React.Component {
           {errorsList}
         </ul>
         <p>{this.state.selectedCategory}</p>
+        <p>Average quantity: {avgQuantity}</p>
+        <p>Average quality: {avgQuality}</p>
+        <p>Average duration: {avgDuration}</p>
       </div>
     )
   }
