@@ -4,12 +4,13 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
+    this.state = {selectedCategory: null, event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   componentDidMount() {
@@ -66,10 +67,14 @@ class UserShow extends React.Component {
     return year + '-' + month + '-' + day;
   }
 
+  selectCategory(event) {
+    this.setState({selectedCategory: event.target.innerHTML});
+  }
+
   render() {
     const categoriesList = this.props.currentUser.categories.map((category, idx) => {
         return (
-          <li key={idx}>{category}</li>
+          <li className="category" onClick={this.selectCategory} key={idx}>{category}</li>
         );
     });
 
@@ -105,6 +110,7 @@ class UserShow extends React.Component {
         <ul className="errors-list">
           {errorsList}
         </ul>
+        <p>{this.state.selectedCategory}</p>
       </div>
     )
   }

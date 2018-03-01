@@ -67,3 +67,7 @@
   list-style: none;
   color: red;
 }
+
+.category:hover {
+  cursor: pointer;
+}
