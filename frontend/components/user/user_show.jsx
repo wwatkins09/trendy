@@ -4,7 +4,7 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000), userId: this.props.currentUser.id}
+    this.state = {event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000), userId: this.props.currentUser.id}}
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -30,20 +30,20 @@ class UserShow extends React.Component {
       return this.handleDateChange;
     } else {
       return (event) => {
-        this.setState({[field]: event.target.value})
+        this.setState({event: Object.assign({}, this.state.event, {[field]: event.target.value})})
       }
     }
   }
 
   handleDateChange(event) {
     const timezoneOffset = new Date().getTimezoneOffset();
-    this.setState({date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})
+    this.setState({event: Object.assign({}, this.state.event, {date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})})
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)})
-    this.props.createEvent(this.state).then(() => {
+    this.setState({event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}})
+    this.props.createEvent(this.state.event).then(() => {
       this.props.clearErrors();
     });
   }
@@ -86,19 +86,19 @@ class UserShow extends React.Component {
         </ul>
         <form onSubmit={this.handleSubmit}>
           <label>Category
-            <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.category}></input>
+            <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.event.category}></input>
           </label>
           <label>Date
-            <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.date)}></input>
+            <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.event.date)}></input>
           </label>
           <label>Quantity
-            <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.quantity}></input>
+            <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.event.quantity}></input>
           </label>
           <label>Quality
-            <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.quality}></input>
+            <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.event.quality}></input>
           </label>
           <label>Duration
-            <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.duration}></input>
+            <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.event.duration}></input>
           </label>
           <button>Add event</button>
         </form>
