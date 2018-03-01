@@ -1,4 +1,5 @@
 import React from 'react';
+import FiveDayIndexItem from './five_day_index_item';
 
 const dayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -25,14 +26,25 @@ class FiveDay extends React.Component {
       );
     });
 
+    const rows = this.props.currentUser.categories.map((category, idx) => {
+      const events = this.props.events.filter((event) => event.category === category)
+      return (
+        <FiveDayIndexItem key={idx} category={category} events={events} />
+      );
+    })
+
     return (
       <div>
         <table>
           <thead>
             <tr>
+              <th>Category</th>
               {headers}
             </tr>
           </thead>
+          <tbody>
+            {rows}
+          </tbody>
         </table>
       </div>
     )
