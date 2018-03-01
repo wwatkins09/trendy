@@ -20,9 +20,11 @@ class FiveDayIndexItem extends React.Component {
 
   updateCanvas() {
     const canvas = document.getElementById(`circle-${this.props.category}`);
+    canvas.width = 30;
+    canvas.height = 30;
     const ctx = canvas.getContext('2d');
     ctx.beginPath();
-    ctx.arc(20, 20, 10, 0, (Math.PI * 2) * (this.props.events.length / 5), true)
+    ctx.arc(15, 15, 15, 0, (Math.PI * 2) * (this.props.events.length / 5), true)
     ctx.stroke();
   }
 
@@ -36,7 +38,7 @@ class FiveDayIndexItem extends React.Component {
 
     return (
       <tr>
-        <td><canvas id={`circle-${this.props.category}`} /></td>
+        <td><canvas id={`circle-${this.props.category}`} className="five-day-circle"/></td>
         <td>{this.props.category}</td>
         {days}
       </tr>

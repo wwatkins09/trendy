@@ -71,3 +71,8 @@
 .category:hover {
   cursor: pointer;
 }
+
+.five-day-circle {
+  width: 30px;
+  height: 30px;
+}
