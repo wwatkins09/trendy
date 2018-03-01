@@ -67,12 +67,10 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const eventsList = this.props.events.map((event, idx) => {
-      if (event) {
+    const categoriesList = this.props.currentUser.categories.map((category, idx) => {
         return (
-          <li key={idx}>{event.category}</li>
+          <li key={idx}>{category}</li>
         );
-      }
     });
 
     const errorsList = this.props.errors.map((error, idx) => {
@@ -84,7 +82,7 @@ class UserShow extends React.Component {
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
         <p>Your events:</p>
         <ul>
-          {eventsList}
+          {categoriesList}
         </ul>
         <form onSubmit={this.handleSubmit}>
           <label>Category
