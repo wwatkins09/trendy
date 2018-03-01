@@ -15,6 +15,7 @@ const FiveDayIndexItem = ({category, events}) => {
 
   return (
     <tr>
+      <td>{events.length / 5 * 100}%</td>
       <td>{category}</td>
       {days}
     </tr>

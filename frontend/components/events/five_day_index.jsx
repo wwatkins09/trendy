@@ -38,6 +38,7 @@ class FiveDay extends React.Component {
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Category</th>
               {headers}
             </tr>
