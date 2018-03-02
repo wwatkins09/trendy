@@ -5,7 +5,7 @@ class Api::CategoriesController < ApplicationController
     @user = current_user
     @category.user_id = @user.id
     if @category.save
-      render 'api/categories/show'
+      render "api/categories/show"
     else
       render json: @event.errors.full_messages, status: 422
     end
@@ -16,7 +16,11 @@ class Api::CategoriesController < ApplicationController
   end
 
   def show
-
+    @category = Category.find(params[:category_id])
+    if @category
+      @user = User.find(@category.user_id)
+      render "api/categories/show"
+    end
   end
 
   def index
