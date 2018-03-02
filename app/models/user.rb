@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :categories
   has_many :events
+
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
