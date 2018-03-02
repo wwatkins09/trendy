@@ -8,6 +8,8 @@ class CategoryIndexItem extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.updateCanvas = this.updateCanvas.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ class CategoryIndexItem extends React.Component {
   }
 
   updateCanvas() {
-    const canvas = document.getElementById(`circle-${this.props.category.name}`);
+    const canvas = this.refs.circle;
     if (canvas) {
       canvas.width = 30;
       canvas.height = 30;
@@ -47,7 +49,7 @@ class CategoryIndexItem extends React.Component {
 
     return (
       <tr>
-        <td><canvas id={`circle-${this.props.category.name}`} className="five-day-circle"/></td>
+        <td><canvas ref="circle" className="five-day-circle"/></td>
         <td>{this.props.category.name}</td>
         {days}
       </tr>
