@@ -114,7 +114,7 @@ class UserShow extends React.Component {
   // }
 
   render() {
-    const categoriesList = this.props.currentUser.categories.map((category, idx) => {
+    const categoriesList = this.props.currentUser.categoryIds.map((category, idx) => {
         return (
           <li className="category" onClick={this.selectCategory} key={idx}>{category}</li>
         );

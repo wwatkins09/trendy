@@ -5,13 +5,15 @@ import {signOut, clearErrors} from '../../actions/session_actions';
 import {fetchEventsByUserId, createEvent} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
-  const currentUser = state.users[state.session.currentUserId];
-  const events = currentUser.eventIds.map((eventId) => {
-    return state.events[eventId]
-  })
+  if (state.users[state.session.currentUserId]) {
+    const currentUser = state.users[state.session.currentUserId];
+    const categories = currentUser.categoryIds.map((categoryId) => {
+      return state.categories[categoryId]
+    });
+  }
   return {
     currentUser,
-    events,
+    categories,
     errors: state.errors
   };
 };
