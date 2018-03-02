@@ -1,8 +1,8 @@
-export const fetchEventsByUserId = (userId) => {
+export const fetchEventsByCategoryId = (categoryId) => {
   return $.ajax({
     method: 'GET',
     url: 'api/events',
-    data: {user_id: userId}
+    data: {category_id: categoryId}
   });
 };
 
