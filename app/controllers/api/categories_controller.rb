@@ -13,7 +13,8 @@ class Api::CategoriesController < ApplicationController
   end
 
   def index
-
+    @user = User.find(params[:user_id])
+    render "api/categories/index"
   end
 
 end
