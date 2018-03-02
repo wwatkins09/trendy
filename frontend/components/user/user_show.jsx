@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import FiveDayContainer from '../events/five_day_index_container';
 
 class UserShow extends React.Component {
 
@@ -11,8 +12,8 @@ class UserShow extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.selectCategory = this.selectCategory.bind(this);
-    this.findAvg = this.findAvg.bind(this);
+    // this.selectCategory = this.selectCategory.bind(this);
+    // this.findAvg = this.findAvg.bind(this);
   }
 
   componentDidMount() {
@@ -69,48 +70,48 @@ class UserShow extends React.Component {
     return year + '-' + month + '-' + day;
   }
 
-  selectCategory(event) {
-    const selectedCategory = event.target.innerHTML;
-    let avgQuantity = 0;
-    let avgQuality = 0;
-    let avgDuration = 0;
-    let count = 0;
-    this.props.events.forEach((event) => {
-      if (event.category !== selectedCategory) {
-        return;
-      } else {
-        count++;
-        avgQuantity += event.quantity;
-        avgQuality += event.quality;
-        avgDuration += event.duration;
-      }
-    });
-    avgQuantity /= count;
-    avgQuality /= count;
-    avgDuration /= count;
-    this.setState({selectedCategory, avgQuantity, avgQuality, avgDuration});
-  }
+  // selectCategory(event) {
+  //   const selectedCategory = event.target.innerHTML;
+  //   let avgQuantity = 0;
+  //   let avgQuality = 0;
+  //   let avgDuration = 0;
+  //   let count = 0;
+  //   this.props.events.forEach((event) => {
+  //     if (event.category !== selectedCategory) {
+  //       return;
+  //     } else {
+  //       count++;
+  //       avgQuantity += event.quantity;
+  //       avgQuality += event.quality;
+  //       avgDuration += event.duration;
+  //     }
+  //   });
+  //   avgQuantity /= count;
+  //   avgQuality /= count;
+  //   avgDuration /= count;
+  //   this.setState({selectedCategory, avgQuantity, avgQuality, avgDuration});
+  // }
 
-  findAvg(category, field) {
-    if (!this.props.events[0]) {
-      return;
-    }
-    let count = 0;
-    let sum = 0;
-    this.props.events.forEach((event) => {
-      if (event.category !== category) {
-        return;
-      } else {
-        count ++;
-        sum += event[field];
-      }
-    });
-    if (count === 0) {
-      return 0;
-    } else {
-      return (sum / count).toFixed(2);
-    }
-  }
+  // findAvg(category, field) {
+  //   if (!this.props.events[0]) {
+  //     return;
+  //   }
+  //   let count = 0;
+  //   let sum = 0;
+  //   this.props.events.forEach((event) => {
+  //     if (event.category !== category) {
+  //       return;
+  //     } else {
+  //       count ++;
+  //       sum += event[field];
+  //     }
+  //   });
+  //   if (count === 0) {
+  //     return 0;
+  //   } else {
+  //     return (sum / count).toFixed(2);
+  //   }
+  // }
 
   render() {
     const categoriesList = this.props.currentUser.categories.map((category, idx) => {
@@ -122,46 +123,49 @@ class UserShow extends React.Component {
     const errorsList = this.props.errors.map((error, idx) => {
       return (<li key={idx} className="error">{error}</li>);
     })
-    const avgQuantity = this.findAvg(this.state.selectedCategory, 'quantity');
-    const avgQuality = this.findAvg(this.state.selectedCategory, 'quality');
-    const avgDuration = this.findAvg(this.state.selectedCategory, 'duration');
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
-        <p>Your events:</p>
-        <ul>
-          {categoriesList}
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          <label>Category
-            <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.event.category}></input>
-          </label>
-          <label>Date
-            <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.event.date)}></input>
-          </label>
-          <label>Quantity
-            <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.event.quantity}></input>
-          </label>
-          <label>Quality
-            <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.event.quality}></input>
-          </label>
-          <label>Duration
-            <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.event.duration}></input>
-          </label>
-          <button>Add event</button>
-        </form>
-        <ul className="errors-list">
-          {errorsList}
-        </ul>
-        <p>{this.state.selectedCategory}</p>
-        <p>Average quantity: {avgQuantity}</p>
-        <p>Average quality: {avgQuality}</p>
-        <p>Average duration: {avgDuration}</p>
-        <Link to="/events/five-day">5 Day</Link>
+        <FiveDayContainer />
       </div>
     )
   }
 }
 
 export default UserShow;
+
+// const avgQuantity = this.findAvg(this.state.selectedCategory, 'quantity');
+// const avgQuality = this.findAvg(this.state.selectedCategory, 'quality');
+// const avgDuration = this.findAvg(this.state.selectedCategory, 'duration');
+
+// <p>Your events:</p>
+// <ul>
+//   {categoriesList}
+// </ul>
+// <form onSubmit={this.handleSubmit}>
+//   <label>Category
+//     <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.event.category}></input>
+//   </label>
+//   <label>Date
+//     <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.event.date)}></input>
+//   </label>
+//   <label>Quantity
+//     <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.event.quantity}></input>
+//   </label>
+//   <label>Quality
+//     <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.event.quality}></input>
+//   </label>
+//   <label>Duration
+//     <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.event.duration}></input>
+//   </label>
+//   <button>Add event</button>
+// </form>
+// <ul className="errors-list">
+//   {errorsList}
+// </ul>
+// <p>{this.state.selectedCategory}</p>
+// <p>Average quantity: {avgQuantity}</p>
+// <p>Average quality: {avgQuality}</p>
+// <p>Average duration: {avgDuration}</p>
+// <Link to="/events/five-day">5 Day</Link>
