@@ -9,6 +9,12 @@ class CategoryIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchCategoriesByUserId(this.props.currentUserId).then(() => {
+      
+    })
+  }
+
   createDate(offset) {
     return new Date(new Date().setDate(new Date().getDate()-offset));
   }

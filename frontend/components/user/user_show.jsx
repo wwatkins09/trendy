@@ -19,8 +19,6 @@ class UserShow extends React.Component {
   componentDidMount() {
     if (parseInt(this.props.match.params.userId) !== this.props.currentUser.id) {
       this.props.history.push(`/users/${this.props.currentUser.id}`)
-    } else {
-      this.props.fetchCategoriesByUserId(this.props.currentUser.id)
     }
   }
 
