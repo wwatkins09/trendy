@@ -5,3 +5,11 @@ export const fetchCategoriesByUserId = (userId) => {
     data: {user_id: userId}
   });
 };
+
+export const createCategory = (category) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/categories',
+    data: {category}
+  });
+};
