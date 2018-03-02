@@ -6,9 +6,15 @@ class CategoryShow extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    if (!this.props.category) {
+      this.props.fetchCategoryById(categoryId);
+    }
+  }
+
   render() {
     return (
-      <div>CATEGORY SHOW</div>
+      <div>{this.props.category.name}</div>
     );
   }
 }
