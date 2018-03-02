@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const findEvent = (events, offset, today) => {
   return events.find((event) => event.date === today.getTime() / 1000 - (86400 * offset));
@@ -50,7 +51,7 @@ class CategoryIndexItem extends React.Component {
     return (
       <tr>
         <td><canvas ref="circle" className="five-day-circle"/></td>
-        <td>{this.props.category.name}</td>
+        <td><Link to={`/categories/${this.props.category.id}`}>{this.props.category.name}</Link></td>
         {days}
       </tr>
     );
