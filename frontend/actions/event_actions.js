@@ -7,7 +7,7 @@ export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
 export const fetchEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
     return APIEventUtil.fetchEventsByCategoryId(categoryId).then((events) => {
-      dispatch(receiveEvents(events));
+      return dispatch(receiveEvents(events));
     })
   }
 }
