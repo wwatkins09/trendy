@@ -1,5 +1,5 @@
 json.id event.id
-json.category event.category
+json.categoryId event.category_id
 json.quantity event.quantity
 json.quality event.quality
 json.duration event.duration
