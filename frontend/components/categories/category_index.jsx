@@ -9,6 +9,12 @@ class CategoryIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.categories.forEach((category) => {
+      this.props.fetchEventsByCategoryId(category.id);
+    })
+  }
+
   createDate(offset) {
     return new Date(new Date().setDate(new Date().getDate()-offset));
   }
