@@ -28,7 +28,7 @@ class UserShow extends React.Component {
 
   toggleForm(event) {
     event.preventDefault;
-    this.setState({toggled: !this.state.toggled})
+    this.setState({formToggled: !this.state.formToggled})
   }
 
   handleChange(event) {
@@ -78,7 +78,7 @@ class UserShow extends React.Component {
     })
 
     let categoryForm;
-    if (this.state.toggled) {
+    if (this.state.formToggled) {
       categoryForm = (
         <form onSubmit={this.handleSubmit}>
           <label>Name
