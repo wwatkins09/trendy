@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import EventIndexContainer from '../events/event_index_container';
+import CategoryShowContainer from '../categories/category_show_container';
 
 class UserShow extends React.Component {
 
@@ -127,7 +127,7 @@ class UserShow extends React.Component {
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
-        <EventIndexContainer />
+        <CategoryShowContainer />
       </div>
     )
   }
