@@ -3,6 +3,14 @@ import * as APICategoryUtil from '../util/api_category_util';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY';
 
+export const fetchCategoryById = (categoryId) => {
+  return (dispatch) => {
+    return APICategoryUtil.fetchCategoryById(categoryId).then((category) => {
+      return dispatch(receiveCategory(category));
+    });
+  };
+};
+
 export const fetchCategoriesByUserId = (userId) => {
   return (dispatch) => {
     return APICategoryUtil.fetchCategoriesByUserId(userId).then((categories) => {

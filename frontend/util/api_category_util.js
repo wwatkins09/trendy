@@ -1,3 +1,11 @@
+export const fetchCategoryById = (categoryId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/categories/${categoryId}`,
+    data: {category_id: categoryId}
+  });
+};
+
 export const fetchCategoriesByUserId = (userId) => {
   return $.ajax({
     method: 'GET',
