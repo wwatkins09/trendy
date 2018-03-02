@@ -17,7 +17,6 @@ const MainPage = (props) => {
   return (
     <div>
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-      <ProtectedRoute path="/events/five-day" component={FiveDayIndexContainer} />
       <AuthRoute path="/" component={SignInContainer} />
     </div>
   )
