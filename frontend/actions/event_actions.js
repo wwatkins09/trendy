@@ -4,9 +4,9 @@ export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
 
-export const fetchEventsByUserId = (userId) => {
+export const fetchEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
-    return APIEventUtil.fetchEventsByUserId(userId).then((events) => {
+    return APIEventUtil.fetchEventsByUserId(categoryId).then((events) => {
       dispatch(receiveEvents(events));
     })
   }
