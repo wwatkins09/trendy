@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import CategoryShow from './category_show';
+import CategoryIndex from './category_index';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoryShow));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoryIndex));

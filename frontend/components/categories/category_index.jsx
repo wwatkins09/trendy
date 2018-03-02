@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CategoryShow extends React.Component {
+class CategoryIndex extends React.Component {
 
   constructor(props) {
     super(props);
@@ -13,4 +13,4 @@ class CategoryShow extends React.Component {
   }
 }
 
-export default CategoryShow;
+export default CategoryIndex;
