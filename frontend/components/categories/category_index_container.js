@@ -7,7 +7,8 @@ import {fetchEventsByCategoryId} from '../../actions/event_actions';
 const mapStateToProps = (state) => {
   return {
     currentUserId: state.session.currentUserId,
-    categories: Object.values(state.categories)
+    categories: Object.values(state.categories),
+    events: Object.values(state.events)
   };
 };
 

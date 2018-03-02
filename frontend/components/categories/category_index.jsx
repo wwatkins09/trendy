@@ -11,8 +11,10 @@ class CategoryIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchCategoriesByUserId(this.props.currentUserId).then(() => {
-      
-    })
+      this.props.categories.forEach((category) => {
+        this.props.fetchEventsByCategoryId(category.id)
+      });
+    });
   }
 
   createDate(offset) {
@@ -33,7 +35,8 @@ class CategoryIndex extends React.Component {
     });
 
     const rows = this.props.categories.map((category, idx) => {
-      return <CategoryIndexItem key={idx} category={category} fetchEventsByCategoryId={this.props.fetchEventsByCategoryId} />
+      const events = this.props.events.filter((event) => event.categoryId === category.id)
+      return <CategoryIndexItem key={idx} category={category} events={events} />
     })
 
     return (
