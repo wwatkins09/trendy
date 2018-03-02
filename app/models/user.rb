@@ -8,7 +8,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :categories
-  has_many :events
+  has_many :events, through: :categories
 
 
   def ensure_session_token

@@ -3,7 +3,6 @@ class Event < ApplicationRecord
   validates :quantity, :quality, :duration, numericality: { greater_than_or_equal_to: 0 }
   validates_uniqueness_of :user_id, scope: [:date, :category_id]
 
-  belongs_to :user
   belongs_to :category
 
 end
