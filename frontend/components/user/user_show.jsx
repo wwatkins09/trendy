@@ -6,14 +6,13 @@ class UserShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {selectedCategory: null, quantity: 0, quality: 0, duration: 0, event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}}
+    this.state = {formToggled: false, category: {name: ''}}
 
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
+    // this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.selectCategory = this.selectCategory.bind(this);
-    // this.findAvg = this.findAvg.bind(this);
   }
 
   componentDidMount() {
@@ -27,88 +26,44 @@ class UserShow extends React.Component {
     this.props.signOut();
   }
 
-  handleChange(field) {
-    if (field === 'date') {
-      return this.handleDateChange;
-    } else {
-      return (event) => {
-        this.setState({event: Object.assign({}, this.state.event, {[field]: event.target.value})})
-      }
-    }
+  toggleForm(event) {
+    event.preventDefault;
+    this.setState({toggled: !this.state.toggled})
   }
 
-  handleDateChange(event) {
-    const timezoneOffset = new Date().getTimezoneOffset();
-    this.setState({event: Object.assign({}, this.state.event, {date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})})
+  handleChange(event) {
+    this.setState({category: {name: event.target.value}})
   }
+
+  // handleDateChange(event) {
+  //   const timezoneOffset = new Date().getTimezoneOffset();
+  //   this.setState({event: Object.assign({}, this.state.event, {date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})})
+  // }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({event: {category: '', quantity: 0, quality: 0, duration: 0, date: (new Date().setHours(0, 0, 0, 0) / 1000)}})
-    this.props.createEvent(this.state.event).then(() => {
+    this.setState({formToggled: false, category: {name: ''}});
+    this.props.createCategory(this.state.category).then(() => {
       this.props.clearErrors();
     });
   }
 
-  formatDate(date) {
-    const dateString = new Date(date * 1000);
-    const year = dateString.getFullYear().toString();
-    let month;
-    if (dateString.getMonth() + 1 < 10) {
-      month = '0' + (dateString.getMonth() + 1).toString();
-    } else {
-      month = (dateString.getMonth() + 1).toString();
-    }
-    let day;
-    if (dateString.getDate() < 10) {
-      day = '0' + dateString.getDate().toString();
-    } else {
-      day = dateString.getDate().toString();
-    }
-    return year + '-' + month + '-' + day;
-  }
-
-  // selectCategory(event) {
-  //   const selectedCategory = event.target.innerHTML;
-  //   let avgQuantity = 0;
-  //   let avgQuality = 0;
-  //   let avgDuration = 0;
-  //   let count = 0;
-  //   this.props.events.forEach((event) => {
-  //     if (event.category !== selectedCategory) {
-  //       return;
-  //     } else {
-  //       count++;
-  //       avgQuantity += event.quantity;
-  //       avgQuality += event.quality;
-  //       avgDuration += event.duration;
-  //     }
-  //   });
-  //   avgQuantity /= count;
-  //   avgQuality /= count;
-  //   avgDuration /= count;
-  //   this.setState({selectedCategory, avgQuantity, avgQuality, avgDuration});
-  // }
-
-  // findAvg(category, field) {
-  //   if (!this.props.events[0]) {
-  //     return;
-  //   }
-  //   let count = 0;
-  //   let sum = 0;
-  //   this.props.events.forEach((event) => {
-  //     if (event.category !== category) {
-  //       return;
-  //     } else {
-  //       count ++;
-  //       sum += event[field];
-  //     }
-  //   });
-  //   if (count === 0) {
-  //     return 0;
+  // formatDate(date) {
+  //   const dateString = new Date(date * 1000);
+  //   const year = dateString.getFullYear().toString();
+  //   let month;
+  //   if (dateString.getMonth() + 1 < 10) {
+  //     month = '0' + (dateString.getMonth() + 1).toString();
   //   } else {
-  //     return (sum / count).toFixed(2);
+  //     month = (dateString.getMonth() + 1).toString();
   //   }
+  //   let day;
+  //   if (dateString.getDate() < 10) {
+  //     day = '0' + dateString.getDate().toString();
+  //   } else {
+  //     day = dateString.getDate().toString();
+  //   }
+  //   return year + '-' + month + '-' + day;
   // }
 
   render() {
@@ -121,11 +76,26 @@ class UserShow extends React.Component {
     const errorsList = this.props.errors.map((error, idx) => {
       return (<li key={idx} className="error">{error}</li>);
     })
+
+    let categoryForm;
+    if (this.state.toggled) {
+      categoryForm = (
+        <form onSubmit={this.handleSubmit}>
+          <label>Name
+            <input placeholder="ex: exercise" onChange={this.handleChange} value={this.state.category.name}></input>
+          </label>
+          <button>Add category</button>
+        </form>
+      );
+    }
+
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
         <CategoryIndexContainer />
+        <button onClick={this.toggleForm}>Add event</button>
+        {categoryForm}
       </div>
     )
   }
@@ -133,32 +103,7 @@ class UserShow extends React.Component {
 
 export default UserShow;
 
-// const avgQuantity = this.findAvg(this.state.selectedCategory, 'quantity');
-// const avgQuality = this.findAvg(this.state.selectedCategory, 'quality');
-// const avgDuration = this.findAvg(this.state.selectedCategory, 'duration');
 
-// <p>Your events:</p>
-// <ul>
-//   {categoriesList}
-// </ul>
-// <form onSubmit={this.handleSubmit}>
-//   <label>Category
-//     <input placeholder="ex: exercise" onChange={this.handleChange('category')} value={this.state.event.category}></input>
-//   </label>
-//   <label>Date
-//     <input type="date" onChange={this.handleChange('date')} value={this.formatDate(this.state.event.date)}></input>
-//   </label>
-//   <label>Quantity
-//     <input placeholder="quantity" type="number" onChange={this.handleChange('quantity')} value={this.state.event.quantity}></input>
-//   </label>
-//   <label>Quality
-//     <input placeholder="quality" type="number" onChange={this.handleChange('quality')} value={this.state.event.quality}></input>
-//   </label>
-//   <label>Duration
-//     <input placeholder="duration" type="number" onChange={this.handleChange('duration')} value={this.state.event.duration}></input>
-//   </label>
-//   <button>Add event</button>
-// </form>
 // <ul className="errors-list">
 //   {errorsList}
 // </ul>
