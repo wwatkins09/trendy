@@ -13,8 +13,8 @@ export const fetchCategoriesByUserId = (userId) => {
 
 export const createCategory = (category) => {
   return (dispatch) => {
-    return APICategoryUtil.createCategory(category).then((category) => {
-      return dispatch(receiveCategory(category));
+    return APICategoryUtil.createCategory(category).then((payload) => {
+      return dispatch(receiveCategory(payload));
     });
   };
 };
@@ -26,9 +26,9 @@ export const receiveCategories = (categories) => {
   };
 };
 
-export const receiveCategory = (category) => {
+export const receiveCategory = (payload) => {
   return {
     type: RECEIVE_CATEGORY,
-    category
+    payload
   }
 }

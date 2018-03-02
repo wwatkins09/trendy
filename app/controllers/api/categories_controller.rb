@@ -2,7 +2,8 @@ class Api::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.user_id = current_user.id
+    @user = current_user
+    @category.user_id = @user.id
     if @category.save
       render 'api/categories/show'
     else
