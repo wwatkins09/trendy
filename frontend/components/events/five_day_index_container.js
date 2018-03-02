@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import FiveDayIndex from './five_day_index';
-import {fetchEventsByUserId} from '../../actions/event_actions';
+import {fetchEventsByCategoryId} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
   const today = new Date();
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEventsByUserId: (userId) => dispatch(fetchEventsByUserId(userId))
+    fetchEventsByCategoryId: (userId) => dispatch(fetchEventsByCategoryId(userId))
   };
 };
 
