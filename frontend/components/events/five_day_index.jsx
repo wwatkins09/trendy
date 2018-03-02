@@ -29,13 +29,12 @@ class FiveDay extends React.Component {
         </th>
       );
     });
-    let rows;
-    // const rows = this.props.currentUser.categories.map((category, idx) => {
-    //   const events = this.props.events.filter((event) => event.category === category)
-    //   return (
-    //     <FiveDayIndexItem key={idx} category={category} events={events} />
-    //   );
-    // })
+    const rows = this.props.categories.map((category, idx) => {
+      const events = this.props.events.filter((event) => event.category === category)
+      return (
+        <FiveDayIndexItem key={idx} category={category} events={events} />
+      );
+    })
 
     return (
       <div>

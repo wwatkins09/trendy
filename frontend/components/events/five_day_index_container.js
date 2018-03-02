@@ -8,6 +8,8 @@ const mapStateToProps = (state) => {
   today.setHours(0, 0, 0, 0);
   return {
     currentUser: state.users[state.session.currentUserId],
+    categories: Object.values(state.categories),
+    events: Object.values(state.events)
     // events: Object.values(state.events).filter((event) => event.date >= today.getTime() / 1000 - 345600)
   };
 };
