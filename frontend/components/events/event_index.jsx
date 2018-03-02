@@ -1,16 +1,16 @@
 import React from 'react';
-import FiveDayIndexItem from './five_day_index_item';
+import EventIndexItem from './event_index_item';
 
 const dayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-class FiveDay extends React.Component {
+class EventIndex extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    // this.props.fetchEventsByCategoryId(this.props.category.id)
+    this.props.fetchEventsByCategoryId(this.props.category.id)
   }
 
   createDate(offset) {
@@ -32,7 +32,7 @@ class FiveDay extends React.Component {
     const rows = this.props.categories.map((category, idx) => {
       const events = this.props.events.filter((event) => event.category === category)
       return (
-        <FiveDayIndexItem key={idx} category={category} events={events} />
+        <EventIndexItem key={idx} category={category} events={events} />
       );
     })
 
@@ -55,4 +55,4 @@ class FiveDay extends React.Component {
   }
 }
 
-export default FiveDay;
+export default EventIndex;

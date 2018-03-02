@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import FiveDayIndex from './five_day_index';
+import EventIndex from './event_index';
 import {fetchEventsByCategoryId} from '../../actions/event_actions';
 
 const mapStateToProps = (state) => {
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FiveDayIndex));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventIndex));

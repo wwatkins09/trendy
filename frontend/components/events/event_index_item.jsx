@@ -4,7 +4,7 @@ const findEvent = (events, offset, today) => {
   return events.find((event) => event.date === today.getTime() / 1000 - (86400 * offset));
 }
 
-class FiveDayIndexItem extends React.Component {
+class EventIndexItem extends React.Component {
 
   constructor(props) {
     super(props);
@@ -55,4 +55,4 @@ class FiveDayIndexItem extends React.Component {
   }
 }
 
-export default FiveDayIndexItem;
+export default EventIndexItem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import FiveDayContainer from '../events/five_day_index_container';
+import EventIndexContainer from '../events/event_index_container';
 
 class UserShow extends React.Component {
 
@@ -127,7 +127,7 @@ class UserShow extends React.Component {
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
-        <FiveDayContainer />
+        <EventIndexContainer />
       </div>
     )
   }
