@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
+    @category = Category.find(params[:category_id])
     render 'api/events/index'
   end
 
