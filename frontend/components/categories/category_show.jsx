@@ -1,12 +1,13 @@
 import React from 'react';
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 class CategoryShow extends React.Component {
 
   constructor(props) {
     super(props);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    this.state = {categoryId: ownProps.match.params.categoryId, date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0};
+    this.state = {categoryId: props.match.params.categoryId, date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -27,6 +28,8 @@ class CategoryShow extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.createEvent(this.state);
+    this.setState({date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0})
   }
 
   formatDate(date) {

@@ -10,12 +10,13 @@ export const createEvent = (event) => {
   return $.ajax({
     method: 'POST',
     url: 'api/events',
-    data: {
+    data: { event: {
       category_id: event.categoryId,
       date: event.date,
       quantity: event.quantity,
       quality: event.quality,
       duration: event.duration
+      }
     }
   });
 };
