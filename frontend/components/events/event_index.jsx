@@ -29,12 +29,10 @@ class EventIndex extends React.Component {
         </th>
       );
     });
-    const rows = this.props.categories.map((category, idx) => {
       const events = this.props.events.filter((event) => event.category === category)
       return (
         <EventIndexItem key={idx} category={category} events={events} />
       );
-    })
 
     return (
       <div>
@@ -47,7 +45,7 @@ class EventIndex extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {rows}
+            {events}
           </tbody>
         </table>
       </div>
