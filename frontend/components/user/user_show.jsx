@@ -35,11 +35,6 @@ class UserShow extends React.Component {
     this.setState({category: {name: event.target.value}})
   }
 
-  // handleDateChange(event) {
-  //   const timezoneOffset = new Date().getTimezoneOffset();
-  //   this.setState({event: Object.assign({}, this.state.event, {date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})})
-  // }
-
   handleSubmit(event) {
     event.preventDefault();
     this.setState({formToggled: false, category: {name: ''}});
@@ -47,24 +42,6 @@ class UserShow extends React.Component {
       this.props.clearErrors();
     });
   }
-
-  // formatDate(date) {
-  //   const dateString = new Date(date * 1000);
-  //   const year = dateString.getFullYear().toString();
-  //   let month;
-  //   if (dateString.getMonth() + 1 < 10) {
-  //     month = '0' + (dateString.getMonth() + 1).toString();
-  //   } else {
-  //     month = (dateString.getMonth() + 1).toString();
-  //   }
-  //   let day;
-  //   if (dateString.getDate() < 10) {
-  //     day = '0' + dateString.getDate().toString();
-  //   } else {
-  //     day = dateString.getDate().toString();
-  //   }
-  //   return year + '-' + month + '-' + day;
-  // }
 
   render() {
     const categoriesList = this.props.currentUser.categoryIds.map((category, idx) => {
@@ -94,7 +71,7 @@ class UserShow extends React.Component {
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
         <CategoryIndexContainer />
-        <button onClick={this.toggleForm}>Add event</button>
+        <button onClick={this.toggleForm}>Add category</button>
         {categoryForm}
       </div>
     )
