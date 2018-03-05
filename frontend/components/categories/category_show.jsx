@@ -57,6 +57,20 @@ class CategoryShow extends React.Component {
   }
 
   render() {
+
+    // const headers = new Array(5).fill(null).map((el, idx) => {
+    //   const day = this.createDate(idx);
+    //   return (
+    //     <th key={idx}>
+    //       <span>
+    //         {dayArr[day.getDay()]}
+    //         {day.getDate()}
+    //       </span>
+    //     </th>
+    //   );
+    // });
+
+
     return (
       <div>
         {this.props.category.name}
