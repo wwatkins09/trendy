@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import CategoryShow from './category_show';
 import {fetchCategoryById} from '../../actions/category_actions';
-import {createEvent} from '../../actions/event_actions';
+import {fetchEventsByCategoryId, createEvent} from '../../actions/event_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
+    categoryId: ownProps.match.params.categoryId,
     category
   };
 };
@@ -21,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCategoryById: (categoryId) => dispatch(fetchCategoryById(categoryId)),
-    createEvent: (event) => dispatch(createEvent(event))
+    createEvent: (event) => dispatch(createEvent(event)),
+    fetchEventsByCategoryId: (categoryId) => dispatch(fetchEventsByCategoryId(categoryId))
   };
 };
 

@@ -16,8 +16,12 @@ class CategoryShow extends React.Component {
 
   componentWillMount() {
     if (!this.props.category.name) {
-      this.props.fetchCategoryById(this.props.match.params.categoryId);
+      this.props.fetchCategoryById(this.props.categoryId);
     }
+  }
+
+  componentDidMount() {
+    this.props.fetchEventsByCategoryId(this.props.categoryId)
   }
 
   handleChange(field) {
