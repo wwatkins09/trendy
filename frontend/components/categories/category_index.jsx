@@ -12,7 +12,7 @@ class CategoryIndex extends React.Component {
   componentDidMount() {
     this.props.fetchCategoriesByUserId(this.props.currentUserId).then(() => {
       this.props.categories.forEach((category) => {
-        this.props.fetchEventsByCategoryId(category.id)
+        this.props.fetchFiveEventsByCategoryId(category.id)
       });
     });
   }
@@ -22,26 +22,33 @@ class CategoryIndex extends React.Component {
   }
 
   render() {
-    // const headers = new Array(5).fill(null).map((el, idx) => {
-    //   const day = this.createDate(idx);
-    //   return (
-    //     <th key={idx}>
-    //       <span>
-    //         {dayArr[day.getDay()]}
-    //         {day.getDate()}
-    //       </span>
-    //     </th>
-    //   );
-    // });
+    const headers = new Array(5).fill(null).map((el, idx) => {
+      const day = this.createDate(idx);
+      return (
+        <th key={idx}>
+          <span>
+            {dayArr[day.getDay()]}
+            {day.getDate()}
+          </span>
+        </th>
+      );
+    });
 
     const categories = this.props.categories.map((category, idx) => {
       return <CategoryIndexItem key={idx} category={category}/>
     })
 
     return (
-      <div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Category</th>
+            {headers}
+          </tr>
+        </thead>
         {categories}
-      </div>
+      </table>
     );
   }
 }

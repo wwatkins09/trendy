@@ -8,8 +8,16 @@ export const fetchEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
     return APIEventUtil.fetchEventsByCategoryId(categoryId).then((events) => {
       return dispatch(receiveEvents(events));
-    })
-  }
+    });
+  };
+}
+
+export const fetchFiveEventsByCategoryId = (categoryId) => {
+  return (dispatch) => {
+    return APIEVentUtil.fetchFiveEventsByCategoryId(categoryId).then((events) => {
+      return dispatch(receiveEvents(events));
+    });
+  };
 }
 
 export const createEvent = (event) => {
@@ -18,8 +26,8 @@ export const createEvent = (event) => {
       dispatch(receiveEvent(payload));
     }, (errors) => {
       dispatch(receiveEventErrors(errors.responseJSON));
-    })
-  }
+    });
+  };
 }
 
 export const receiveEvents = (events) => {
