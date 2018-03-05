@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
-    categoryId: ownProps.match.params.categoryId,
+    categoryId: parseInt(ownProps.match.params.categoryId),
     category
   };
 };
