@@ -54,7 +54,9 @@ class EventIndex extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {events}
+            <tr>
+              {events}
+            </tr>
           </tbody>
         </table>
       </div>

@@ -48,10 +48,10 @@ class CategoryIndexItem extends React.Component {
     //   return (<td key={idx}>{content}</td>);
     // })
     // {days}
+    // <td><canvas ref="circle" className="five-day-circle"/></td>
 
     return (
       <tr>
-        // <td><canvas ref="circle" className="five-day-circle"/></td>
         <td><Link to={`/categories/${this.props.category.id}`}>{this.props.category.name}</Link></td>
       </tr>
     );

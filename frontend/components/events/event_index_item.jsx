@@ -1,9 +1,5 @@
 import React from 'react';
 
-const findEvent = (events, offset, today) => {
-  return events.find((event) => event.date === today.getTime() / 1000 - (86400 * offset));
-}
-
 class EventIndexItem extends React.Component {
 
   constructor(props) {
@@ -40,17 +36,10 @@ class EventIndexItem extends React.Component {
   render() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const days = Array(5).fill(null).map((el, idx) => {
-      const content = findEvent(this.props.events, idx, today) ? '✓' : 'X';
-      return (<td key={idx}>{content}</td>);
-    })
-
     return (
-      <tr>
-        <td><canvas id={`circle-${this.props.category.name}`} className="five-day-circle"/></td>
-        <td>{this.props.category.name}</td>
-        {days}
-      </tr>
+        <td>
+          <canvas id={`circle-${this.props.categoryId}`} className="five-day-circle"/>
+        </td>
     );
   }
 }

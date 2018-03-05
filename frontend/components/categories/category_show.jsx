@@ -33,6 +33,10 @@ class CategoryShow extends React.Component {
     this.setState({date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0})
   }
 
+  createDate(offset) {
+    return new Date(new Date().setDate(new Date().getDate()-offset));
+  }
+
   formatDate(date) {
     const dateString = new Date(date * 1000);
     const year = dateString.getFullYear().toString();
@@ -58,18 +62,6 @@ class CategoryShow extends React.Component {
 
   render() {
 
-    // const headers = new Array(5).fill(null).map((el, idx) => {
-    //   const day = this.createDate(idx);
-    //   return (
-    //     <th key={idx}>
-    //       <span>
-    //         {dayArr[day.getDay()]}
-    //         {day.getDate()}
-    //       </span>
-    //     </th>
-    //   );
-    // });
-
 
     return (
       <div>
@@ -81,6 +73,7 @@ class CategoryShow extends React.Component {
           <input type="number" value={this.state.duration} onChange={this.handleChange('duration')}></input>
             <button>Create new event</button>
         </form>
+        <EventIndexContainer categoryId={this.props.categoryId}/>
       </div>
     );
   }
