@@ -14,7 +14,7 @@ export const fetchEventsByCategoryId = (categoryId) => {
 
 export const fetchFiveEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
-    return APIEVentUtil.fetchFiveEventsByCategoryId(categoryId).then((events) => {
+    return APIEventUtil.fetchFiveEventsByCategoryId(categoryId).then((events) => {
       return dispatch(receiveEvents(events));
     });
   };

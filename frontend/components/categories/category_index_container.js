@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCategoriesByUserId: (userId) => dispatch(fetchCategoriesByUserId(userId)),
-    fetchFiveEventsByCategoryId: (categoryId) => dispatch(fetchEventsByCategoryId(categoryId))
+    fetchFiveEventsByCategoryId: (categoryId) => dispatch(fetchFiveEventsByCategoryId(categoryId))
   };
 };
 
