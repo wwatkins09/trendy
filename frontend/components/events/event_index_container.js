@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import EventIndex from './event_index';
-import {fetchEventsByCategoryId} from '../../actions/event_actions';
+import {fetchEventsByCategoryId, deleteEvent} from '../../actions/event_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const today = new Date();
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEventsByCategoryId: (userId) => dispatch(fetchEventsByCategoryId(userId))
+    fetchEventsByCategoryId: (userId) => dispatch(fetchEventsByCategoryId(userId)),
+    deleteEvent: (eventId) => dispatch(deleteEvent(eventId))
   };
 };
 

@@ -30,6 +30,14 @@ export const createEvent = (event) => {
   };
 }
 
+export const deleteEvent = (eventId) => {
+  return (dispatch) => {
+    return APIEventUtil.deleteEvent(eventId).then((event) => {
+      dispatch(removeEvent(event));
+    });
+  };
+};
+
 export const receiveEvents = (events) => {
   return {
     type: RECEIVE_EVENTS,
