@@ -5,7 +5,6 @@ class Api::EventsController < ApplicationController
     if params[:five_day]
       @events = @category.events.where("date >= ?", (Time.now.to_i - 345600))
     else
-      debugger
       @events = @category.events
     end
     render 'api/events/index'

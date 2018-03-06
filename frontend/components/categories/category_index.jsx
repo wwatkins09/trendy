@@ -2,6 +2,8 @@ import React from 'react';
 import CategoryIndexItem from './category_index_item';
 
 const dayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
 class CategoryIndex extends React.Component {
 
@@ -35,7 +37,8 @@ class CategoryIndex extends React.Component {
     });
 
     const categories = this.props.categories.map((category, idx) => {
-      return <CategoryIndexItem key={idx} category={category}/>
+      const events = this.props.events.filter((event) => event.categoryId === category.id && event.date >= (today.getTime() / 1000) - 345600)
+      return <CategoryIndexItem key={idx} category={category} events={events}/>
     })
 
     return (
