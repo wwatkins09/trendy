@@ -3,8 +3,7 @@ export const fetchEventsByCategoryId = (categoryId) => {
     method: 'GET',
     url: 'api/events',
     data: {
-      category_id: categoryId,
-      five_day: false
+      category_id: categoryId
     }
   });
 };
