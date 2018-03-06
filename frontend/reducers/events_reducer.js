@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 import {RECEIVE_EVENTS, RECEIVE_EVENT, REMOVE_EVENT} from '../actions/event_actions';
 
 const eventsReducer = (oldState = {}, action) => {
@@ -8,8 +9,8 @@ const eventsReducer = (oldState = {}, action) => {
     case RECEIVE_EVENT:
       return Object.assign({}, oldState, {[action.payload.event.id]: action.payload.event});
     case REMOVE_EVENT:
-      newState = Object.assign({}, oldState);
-      delete newState[action.event.id];
+      newState = merge({}, oldState);
+      delete newState[action.payload.event.id];
       return newState;
     default:
       return oldState;

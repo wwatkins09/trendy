@@ -34,7 +34,7 @@ class EventIndex extends React.Component {
 
     const events = this.props.events.sort(this.compareDates).map((event, idx) => {
       return (
-        <EventIndexItem key={idx} event={event} />
+        <EventIndexItem key={idx} event={event} deleteEvent={this.props.deleteEvent}/>
       );
     });
 

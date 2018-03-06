@@ -53,10 +53,10 @@ export const receiveEvent = (payload) => {
   }
 }
 
-export const removeEvent = (event) => {
+export const removeEvent = (payload) => {
   return {
     type: REMOVE_EVENT,
-    event
+    payload
   }
 }
 

@@ -16,6 +16,7 @@ class Api::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if (@event.save)
+      @category = Category.find(@event.category_id)
       render 'api/events/show'
     else
       render json: @event.errors.full_messages, status: 422
@@ -28,6 +29,7 @@ class Api::EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:event_id])
     @event.destroy
+    @category = Category.find(@event.category_id)
     render 'api/events/show'
   end
 
