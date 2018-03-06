@@ -31,17 +31,7 @@ class EventIndex extends React.Component {
   }
 
   render() {
-    // const headers = new Array(5).fill(null).map((el, idx) => {
-    //   const day = this.createDate(idx);
-    //   return (
-    //     <th key={idx}>
-    //       <span>
-    //         {dayArr[day.getDay()]}
-    //         {day.getDate()}
-    //       </span>
-    //     </th>
-    //   );
-    // });
+
     const events = this.props.events.sort(this.compareDates).map((event, idx) => {
       return (
         <EventIndexItem key={idx} event={event} />
@@ -57,19 +47,3 @@ class EventIndex extends React.Component {
 }
 
 export default EventIndex;
-
-
-// <table>
-//   <thead>
-//     <tr>
-//       <th></th>
-//       <th>Category</th>
-//       {headers}
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//       {events}
-//     </tr>
-//   </tbody>
-// </table>

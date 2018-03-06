@@ -59,16 +59,3 @@ class CategoryIndex extends React.Component {
 }
 
 export default CategoryIndex;
-
-// <table>
-//   <thead>
-//     <tr>
-//       <th></th>
-//       <th>Category</th>
-//       {headers}
-//     </tr>
-//   </thead>
-//   <tbody>
-//     {rows}
-//   </tbody>
-// </table>
