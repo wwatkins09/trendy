@@ -26,6 +26,9 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:event_id])
+    @event.destroy
+    render 'api/events/show'
   end
 
   private
