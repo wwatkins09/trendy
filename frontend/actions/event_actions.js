@@ -3,6 +3,7 @@ import * as APIEventUtil from '../util/api_event_util';
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
+export const REMOVE_EVENT = 'REMOVE_EVENT';
 
 export const fetchEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
@@ -49,6 +50,13 @@ export const receiveEvent = (payload) => {
   return {
     type: RECEIVE_EVENT,
     payload
+  }
+}
+
+export const removeEvent = (event) => {
+  return {
+    type: REMOVE_EVENT,
+    event
   }
 }
 
