@@ -11,7 +11,6 @@ class UserShow extends React.Component {
     this.handleSignOut = this.handleSignOut.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -79,13 +78,3 @@ class UserShow extends React.Component {
 }
 
 export default UserShow;
-
-
-// <ul className="errors-list">
-//   {errorsList}
-// </ul>
-// <p>{this.state.selectedCategory}</p>
-// <p>Average quantity: {avgQuantity}</p>
-// <p>Average quality: {avgQuality}</p>
-// <p>Average duration: {avgDuration}</p>
-// <Link to="/events/five-day">5 Day</Link>

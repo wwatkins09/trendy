@@ -21,6 +21,10 @@ class CategoryShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleChange(field) {
     return (event) => {
       this.setState({[field]: event.target.value});
@@ -62,6 +66,9 @@ class CategoryShow extends React.Component {
 
   render() {
 
+    const errorsList = this.props.errors.map((error, idx) => {
+      return (<li className="error" key={idx}>{error}</li>)
+    })
 
     return (
       <div>
@@ -73,6 +80,9 @@ class CategoryShow extends React.Component {
           <input type="number" value={this.state.duration} onChange={this.handleChange('duration')}></input>
             <button>Create new event</button>
         </form>
+        <ul className="errors-list">
+          {errorsList}
+        </ul>
         <EventIndexContainer categoryId={this.props.categoryId}/>
       </div>
     );
