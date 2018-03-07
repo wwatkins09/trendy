@@ -38,7 +38,7 @@ class LineGraph extends React.Component {
 
   render() {
 
-    const yAxis = [0, 1, 2, 3, 4, 5].map((num, idx) => {
+    const yAxis = [5, 4, 3, 2, 1, 0].map((num, idx) => {
       return <span key={idx} className="line-graph-y-axis-label">
         <p>
           {num * 20}%
