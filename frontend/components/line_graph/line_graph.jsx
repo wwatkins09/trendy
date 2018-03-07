@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -87,6 +88,7 @@ class LineGraph extends React.Component {
     return (
       <div id="line-graph-container">
         <h3 id="line-graph-title">{this.props.category.name}</h3>
+        <Link to={`/categories/${this.props.categoryId}`}>Back</Link>
         <content id="line-graph-upper">
           <span id="line-graph-y-axis">{yAxis}</span>
           <canvas ref="linegraph" id="line-graph" />
