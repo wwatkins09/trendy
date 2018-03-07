@@ -150,6 +150,8 @@
 
 #line-graph {
   margin-top: 90px;
+  width: 500px;
+  height: 500px;
 }
 
 #line-graph-upper {
@@ -161,11 +163,11 @@
   flex-direction: column;
   width: 50px;
   height: 720px;
-  margin-top: 45px;
+  margin-top: 15px;
 }
 
 .line-graph-y-axis-label {
-  height: 70px;
+  height: 100px;
   width: 100%;
   display: flex;
   align-items: flex-end;

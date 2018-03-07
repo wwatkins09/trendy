@@ -41,23 +41,25 @@ class LineGraph extends React.Component {
   updateCanvas() {
     const canvas = this.refs.linegraph;
     const ctx = canvas.getContext('2d');
-    canvas.height = 806;
-    canvas.width = 806;
+    canvas.height = 500;
+    canvas.width = 500;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       ctx.beginPath();
-      ctx.moveTo(0, 70*i);
-      ctx.lineTo(806, 70*i);
+      ctx.moveTo(0, 100*i);
+      ctx.lineTo(500, 100*i);
       ctx.stroke();
       ctx.closePath();
     }
 
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = 2;
     this.state.weeklyEvents.forEach((week, idx) => {
-      const originX = 806 / 13 * idx;
-      const originY = 350 - ((week.length / 7) * 350);
+      const originX = 500 / 13 * idx;
+      const originY = 500 - ((week.length / 7) * 500);
       ctx.beginPath();
       ctx.arc(originX, originY, 5, 0, (Math.PI * 2), false);
       ctx.closePath();
