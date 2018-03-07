@@ -2,7 +2,7 @@
 
 Trendy is a web app which allows users to keep track of trends in various aspects of their lives, whether that be exercise, meditation, or sleep. After creating a category, users can add events for each day they engage in that activity and report whatever information might apply, including quantity, quality, and duration. Once the user has accrued enough data, they can view graphs to look for patterns in their habits.
 
-Trendy uses Ruby on Rails for its backend and React/Redux on the frontend, and uses HTML's canvas element to render graphs and charts.
+Trendy uses Ruby on Rails for its backend and React/Redux on the frontend, and uses HTML's canvas element to render graphs and charts. To run it locally, clone the repository, run `npm install`, then `rails s` and `npm run webpack` in the console.
 
 ##Current features:
 
