@@ -8,7 +8,9 @@ class LineGraph extends React.Component {
 
   render() {
     return (
-      <div>LINE GRAPH</div>
+      <div>
+
+      </div>
     )
   }
 }
