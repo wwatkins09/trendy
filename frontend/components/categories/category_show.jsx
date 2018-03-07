@@ -82,10 +82,10 @@ class CategoryShow extends React.Component {
           <label>Quantity
             <input type="number" value={this.state.quantity} onChange={this.handleChange('quantity')}></input>
           </label>
-          <label>Quality
+          <label>Quality (1-10)
             <input type="number" value={this.state.quality} onChange={this.handleChange('quality')}></input>
           </label>
-          <label>Duration
+          <label>Duration (minutes)
             <input type="number" value={this.state.duration} onChange={this.handleChange('duration')}></input>
           </label>
             <button>Create new event</button>
