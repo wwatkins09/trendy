@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import UserShow from './user_show';
-import {signOut, clearErrors} from '../../actions/session_actions';
+import {clearErrors} from '../../actions/session_actions';
 import {createCategory} from '../../actions/category_actions';
 
 const mapStateToProps = (state) => {
@@ -22,7 +22,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(signOut()),
     createCategory: (category) => dispatch(createCategory(category)),
     clearErrors: () => dispatch(clearErrors()),
   };

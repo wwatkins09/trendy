@@ -1,6 +1,8 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Navbar from './navbar';
+import {signOut} from '../../actions/session_actions';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    signOut: () => dispatch(signOut()),
   };
 };
 

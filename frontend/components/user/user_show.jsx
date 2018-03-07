@@ -8,7 +8,6 @@ class UserShow extends React.Component {
     super(props);
     this.state = {formToggled: false, category: {name: ''}}
 
-    this.handleSignOut = this.handleSignOut.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,11 +17,6 @@ class UserShow extends React.Component {
     if (parseInt(this.props.match.params.userId) !== this.props.currentUser.id) {
       this.props.history.push(`/users/${this.props.currentUser.id}`)
     }
-  }
-
-  handleSignOut(event) {
-    event.preventDefault();
-    this.props.signOut();
   }
 
   toggleForm(event) {
@@ -68,7 +62,6 @@ class UserShow extends React.Component {
     return (
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
-        <button className="session-button" onClick={this.handleSignOut}>Sign out</button>
         <CategoryIndexContainer />
         <button onClick={this.toggleForm}>Add category</button>
         {categoryForm}
