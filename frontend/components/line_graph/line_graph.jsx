@@ -8,8 +8,15 @@ class LineGraph extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {weeklyEvents: this.sortEvents(props.events)}
 
     this.updateCanvas = this.updateCanvas.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.events) {
+      this.setState({weeklyEvents: this.sortEvents(props.events)})
+    }
   }
 
   componentDidMount() {
@@ -18,6 +25,13 @@ class LineGraph extends React.Component {
     }
     this.props.fetchThreeMonthsOfEventsByCategoryId(this.props.categoryId);
     this.updateCanvas();
+  }
+
+  sortEvents(events) {
+    const currentTimestamp = today.getTime() / 1000;
+    return Array(13).fill(null).map((el, idx) => {
+      return events.filter((event) => (event.date >= currentTimestamp - ((idx + 1) * 86400 * 7) && event.date < currentTimestamp - (idx * 86400 * 7)));
+    });
   }
 
   updateCanvas() {
@@ -39,7 +53,7 @@ class LineGraph extends React.Component {
   }
 
   render() {
-    console.log(this.props.events);
+    console.log(this.state.weeklyEvents);
 
     const yAxis = [5, 4, 3, 2, 1, 0].map((num, idx) => {
       return <span key={idx} className="line-graph-y-axis-label">
