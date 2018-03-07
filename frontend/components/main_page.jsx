@@ -22,7 +22,7 @@ const MainPage = (props) => {
       <ProtectedRoute path="/categories/:categoryId" component={CategoryShowContainer} />
       <AuthRoute path="/" component={SignInContainer} />
     </div>
-  )
-}
+  );
+};
 
 export default withRouter(connect(mapStateToProps, null)(MainPage));
