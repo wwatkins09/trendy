@@ -33,7 +33,9 @@ class CategoryShow extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createEvent(this.state);
+    this.props.createEvent(this.state).then(() => {
+      this.props.clearErrors();
+    });
     this.setState({date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0})
   }
 
