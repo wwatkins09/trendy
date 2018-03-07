@@ -1,5 +1,6 @@
 import React from 'react';
 import EventIndexContainer from '../events/event_index_container';
+import {Link} from 'react-router-dom';
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -94,6 +95,7 @@ class CategoryShow extends React.Component {
           {errorsList}
         </ul>
         <EventIndexContainer categoryId={this.props.categoryId}/>
+        <Link to={`/categories/${this.props.categoryId}/line-graph`}>Line graph</Link>
       </div>
     );
   }
