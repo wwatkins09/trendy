@@ -39,6 +39,7 @@ class LineGraph extends React.Component {
   }
 
   render() {
+    console.log(this.props.events);
 
     const yAxis = [5, 4, 3, 2, 1, 0].map((num, idx) => {
       return <span key={idx} className="line-graph-y-axis-label">

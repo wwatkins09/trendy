@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   const events = Object.values(state.events).filter((event) => (event.categoryId === categoryId && event.date >= (new Date().getTime() / 1000 - 7776000)))
   return {
     categoryId,
-    category
+    category,
+    events
   };
 };
 
