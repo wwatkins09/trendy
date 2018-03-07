@@ -94,6 +94,30 @@
 #new-trend-form {
   display: flex;
   flex-direction: column;
+  align-items:stretch;
   width: 200px;
   margin-top: 20px;
+}
+
+#new-trend-form label {
+  display: flex;
+  justify-content: space-between;
+}
+
+#new-trend-form input[type=number] {
+  width: 20px;
+}
+
+#new-trend-form button {
+  border: 1px solid black;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  background-color: white;
+}
+
+#new-trend-form button:hover {
+  cursor: pointer;
+  color: blue;
+  border: 1px solid blue;
 }

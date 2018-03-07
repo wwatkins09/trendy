@@ -74,10 +74,18 @@ class CategoryShow extends React.Component {
       <div>
         <h3>{this.props.category.name}</h3>
         <form id="new-trend-form" onSubmit={this.handleSubmit}>
-          <input type="date" value={this.formatDate(this.state.date)} onChange={this.handleDateChange}></input>
-          <input type="number" value={this.state.quantity} onChange={this.handleChange('quantity')}></input>
-          <input type="number" value={this.state.quality} onChange={this.handleChange('quality')}></input>
-          <input type="number" value={this.state.duration} onChange={this.handleChange('duration')}></input>
+          <label>Date
+            <input type="date" value={this.formatDate(this.state.date)} onChange={this.handleDateChange}></input>
+          </label>
+          <label>Quantity
+            <input type="number" value={this.state.quantity} onChange={this.handleChange('quantity')}></input>
+          </label>
+          <label>Quality
+            <input type="number" value={this.state.quality} onChange={this.handleChange('quality')}></input>
+          </label>
+          <label>Duration
+            <input type="number" value={this.state.duration} onChange={this.handleChange('duration')}></input>
+          </label>
             <button>Create new event</button>
         </form>
         <ul className="errors-list">
