@@ -41,8 +41,8 @@ class LineGraph extends React.Component {
   updateCanvas() {
     const canvas = this.refs.linegraph;
     const ctx = canvas.getContext('2d');
-    canvas.height = 500;
-    canvas.width = 500;
+    canvas.height = 525;
+    canvas.width = 525;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
@@ -58,7 +58,7 @@ class LineGraph extends React.Component {
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 2;
     this.state.weeklyEvents.forEach((week, idx) => {
-      const originX = 500 / 13 * idx;
+      const originX = (500 / 13 * idx) + 25;
       const originY = 500 - ((week.length / 7) * 500);
       ctx.beginPath();
       ctx.arc(originX, originY, 5, 0, (Math.PI * 2), false);

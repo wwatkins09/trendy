@@ -149,13 +149,14 @@
 }
 
 #line-graph {
-  margin-top: 90px;
-  width: 500px;
-  height: 500px;
+  margin-top: 40px;
+  width: 525px;
+  height: 525px;
 }
 
 #line-graph-upper {
   display: flex;
+  height: 550px;
 }
 
 #line-graph-y-axis {
@@ -163,25 +164,26 @@
   flex-direction: column;
   width: 50px;
   height: 720px;
-  margin-top: 15px;
 }
 
 .line-graph-y-axis-label {
   height: 100px;
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.line-grap-y-axis-label p {
+.line-graph-y-axis-label p {
   height: 16px;
+  margin-bottom: 40px;
 }
 
 #line-graph-x-axis {
   display: flex;
+  margin-left: 44px;
 }
 
 #line-graph-x-axis p {
-  width: 62px;
+  width: 38.46px;
   text-align: right;
 }
