@@ -90,3 +90,10 @@
   color: black;
   font-weight: bold;
 }
+
+#new-trend-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 20px;
+}

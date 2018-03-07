@@ -72,7 +72,7 @@ class CategoryShow extends React.Component {
 
     return (
       <div>
-        {this.props.category.name}
+        <h3>{this.props.category.name}</h3>
         <form id="new-trend-form" onSubmit={this.handleSubmit}>
           <input type="date" value={this.formatDate(this.state.date)} onChange={this.handleDateChange}></input>
           <input type="number" value={this.state.quantity} onChange={this.handleChange('quantity')}></input>
