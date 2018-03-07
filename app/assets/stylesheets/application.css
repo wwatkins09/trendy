@@ -150,13 +150,13 @@
 
 #line-graph {
   margin-top: 40px;
-  width: 525px;
-  height: 525px;
+  width: 550px;
+  height: 550px;
 }
 
 #line-graph-upper {
   display: flex;
-  height: 550px;
+  height: 600px;
 }
 
 #line-graph-y-axis {
@@ -186,4 +186,8 @@
 #line-graph-x-axis p {
   width: 38.46px;
   text-align: right;
+}
+
+#line-graph-title {
+  margin-bottom: 0;
 }

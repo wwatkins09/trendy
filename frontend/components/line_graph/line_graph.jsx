@@ -34,23 +34,23 @@ class LineGraph extends React.Component {
   sortEvents(events) {
     const currentTimestamp = today.getTime() / 1000;
     return Array(13).fill(null).map((el, idx) => {
-      return events.filter((event) => (event.date >= currentTimestamp - ((idx + 1) * 86400 * 7) && event.date < currentTimestamp - (idx * 86400 * 7)));
+      return events.filter((event) => (event.date > currentTimestamp - ((idx + 1) * 86400 * 7) && event.date <= currentTimestamp - (idx * 86400 * 7)));
     }).reverse();
   }
 
   updateCanvas() {
     const canvas = this.refs.linegraph;
     const ctx = canvas.getContext('2d');
-    canvas.height = 525;
-    canvas.width = 525;
+    canvas.height = 550;
+    canvas.width = 550;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       ctx.beginPath();
-      ctx.moveTo(0, 100*i);
-      ctx.lineTo(500, 100*i);
+      ctx.moveTo(0, 100*i + 25);
+      ctx.lineTo(500, 100*i + 25);
       ctx.stroke();
       ctx.closePath();
     }
@@ -59,7 +59,7 @@ class LineGraph extends React.Component {
     ctx.lineWidth = 2;
     this.state.weeklyEvents.forEach((week, idx) => {
       const originX = (500 / 13 * idx) + 25;
-      const originY = 500 - ((week.length / 7) * 500);
+      const originY = 525 - ((week.length / 7) * 500);
       ctx.beginPath();
       ctx.arc(originX, originY, 5, 0, (Math.PI * 2), false);
       ctx.closePath();
@@ -86,6 +86,7 @@ class LineGraph extends React.Component {
 
     return (
       <div id="line-graph-container">
+        <h3 id="line-graph-title">{this.props.category.name}</h3>
         <content id="line-graph-upper">
           <span id="line-graph-y-axis">{yAxis}</span>
           <canvas ref="linegraph" id="line-graph" />
