@@ -8,11 +8,17 @@ class Navbar extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Link to="/">Home</Link>
-      </div>
-    );
+    if (this.props.currentUserId) {
+      return (
+        <div>
+          <Link to="/">Home</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 
