@@ -121,3 +121,24 @@
   color: blue;
   border: 1px solid blue;
 }
+
+.event-delete-button {
+  border: 1px solid black;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.event-delete-button:hover {
+  cursor: pointer;
+  color: blue;
+  border: 1px solid blue;
+}
+
+.event-index-item {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}

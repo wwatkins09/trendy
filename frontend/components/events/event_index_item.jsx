@@ -21,11 +21,11 @@ class EventIndexItem extends React.Component {
         <span>{new Date(this.props.event.date * 1000).toDateString()}</span>
       );
       button = (
-        <button onClick={this.handleDelete}>Delete</button>
+        <button className="event-delete-button" onClick={this.handleDelete}>Delete</button>
       )
     }
     return (
-      <div>
+      <div className="event-index-item">
         {content}
         {button}
       </div>
