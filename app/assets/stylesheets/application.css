@@ -142,3 +142,29 @@
   justify-content: space-between;
   margin: 5px 0;
 }
+
+#line-graph-container {
+  display: flex;
+}
+
+#line-graph {
+  margin-top: 50px;
+}
+
+#line-graph-y-axis {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 600px;
+}
+
+.line-graph-y-axis-label {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.line-grap-y-axis-label p {
+  height: 16px;
+}
