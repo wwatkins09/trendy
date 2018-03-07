@@ -3,7 +3,9 @@ class Api::EventsController < ApplicationController
   def index
     @category = Category.find(params[:category_id])
     if params[:five_day]
-      @events = @category.events.where("date >= ?", (Time.now.to_i - 345600))
+      @events = @category.events.where("date >= ?", (Time.now.to_i - 432000))
+    elsif params[:three_months]
+      @events = @category.events.where("date >= ?", (Time.now.to_i - 7776000))
     else
       @events = @category.events
     end
