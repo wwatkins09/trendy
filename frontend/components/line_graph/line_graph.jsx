@@ -16,6 +16,7 @@ class LineGraph extends React.Component {
     if (!this.props.category.id) {
       this.props.fetchCategoryById(this.props.categoryId);
     }
+    this.props.fetchThreeMonthsOfEventsByCategoryId(this.props.categoryId);
     this.updateCanvas();
   }
 
@@ -25,6 +26,7 @@ class LineGraph extends React.Component {
     canvas.height = 500;
     canvas.width = 806;
 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {

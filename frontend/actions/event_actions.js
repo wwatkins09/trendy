@@ -11,7 +11,7 @@ export const fetchEventsByCategoryId = (categoryId) => {
       return dispatch(receiveEvents(events));
     });
   };
-}
+};
 
 export const fetchFiveEventsByCategoryId = (categoryId) => {
   return (dispatch) => {
@@ -19,7 +19,15 @@ export const fetchFiveEventsByCategoryId = (categoryId) => {
       return dispatch(receiveEvents(events));
     });
   };
-}
+};
+
+export const fetchThreeMonthsOfEventsByCategoryId = (categoryId) => {
+  return (dispatch) => {
+    return APIEventUtil.fetchThreeMonthsOfEventsByCategoryId(categoryId).then((events) => {
+      return dispatch(receiveEvents(events));
+    });
+  };
+};
 
 export const createEvent = (event) => {
   return (dispatch) => {
@@ -29,7 +37,7 @@ export const createEvent = (event) => {
       dispatch(receiveEventErrors(errors.responseJSON));
     });
   };
-}
+};
 
 export const deleteEvent = (eventId) => {
   return (dispatch) => {
@@ -43,26 +51,26 @@ export const receiveEvents = (events) => {
   return {
     type: RECEIVE_EVENTS,
     events
-  }
-}
+  };
+};
 
 export const receiveEvent = (payload) => {
   return {
     type: RECEIVE_EVENT,
     payload
-  }
-}
+  };
+};
 
 export const removeEvent = (payload) => {
   return {
     type: REMOVE_EVENT,
     payload
-  }
-}
+  };
+};
 
 export const receiveEventErrors = (errors) => {
   return {
     type: RECEIVE_EVENT_ERRORS,
     errors
-  }
-}
+  };
+};

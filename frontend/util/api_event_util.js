@@ -19,6 +19,17 @@ export const fetchFiveEventsByCategoryId = (categoryId) => {
   })
 }
 
+export const fetchThreeMonthsOfEventsByCategoryId = (categoryId) => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/events',
+    data: {
+      category_id: categoryId,
+      three_months: true
+    }
+  })
+}
+
 export const createEvent = (event) => {
   return $.ajax({
     method: 'POST',
