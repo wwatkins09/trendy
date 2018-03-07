@@ -27,17 +27,21 @@ class LineGraph extends React.Component {
     this.updateCanvas();
   }
 
+  componentDidUpdate() {
+    this.updateCanvas();
+  }
+
   sortEvents(events) {
     const currentTimestamp = today.getTime() / 1000;
     return Array(13).fill(null).map((el, idx) => {
       return events.filter((event) => (event.date >= currentTimestamp - ((idx + 1) * 86400 * 7) && event.date < currentTimestamp - (idx * 86400 * 7)));
-    });
+    }).reverse();
   }
 
   updateCanvas() {
     const canvas = this.refs.linegraph;
     const ctx = canvas.getContext('2d');
-    canvas.height = 500;
+    canvas.height = 806;
     canvas.width = 806;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,15 +49,24 @@ class LineGraph extends React.Component {
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       ctx.beginPath();
-      ctx.moveTo(0, 100*i);
-      ctx.lineTo(806, 100*i);
+      ctx.moveTo(0, 70*i);
+      ctx.lineTo(806, 70*i);
       ctx.stroke();
+      ctx.closePath();
     }
+
+    this.state.weeklyEvents.forEach((week, idx) => {
+      const originX = 806 / 13 * idx;
+      const originY = 350 - ((week.length / 7) * 350);
+      ctx.beginPath();
+      ctx.arc(originX, originY, 5, 0, (Math.PI * 2), false);
+      ctx.closePath();
+      ctx.stroke();
+    })
 
   }
 
   render() {
-    console.log(this.state.weeklyEvents);
 
     const yAxis = [5, 4, 3, 2, 1, 0].map((num, idx) => {
       return <span key={idx} className="line-graph-y-axis-label">

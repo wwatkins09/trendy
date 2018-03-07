@@ -161,10 +161,11 @@
   flex-direction: column;
   width: 50px;
   height: 720px;
+  margin-top: 45px;
 }
 
 .line-graph-y-axis-label {
-  height: 120px;
+  height: 70px;
   width: 100%;
   display: flex;
   align-items: flex-end;
