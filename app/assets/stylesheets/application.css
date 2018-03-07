@@ -145,10 +145,15 @@
 
 #line-graph-container {
   display: flex;
+  flex-direction: column;
 }
 
 #line-graph {
   margin-top: 50px;
+}
+
+#line-graph-upper {
+  display: flex;
 }
 
 #line-graph-y-axis {
@@ -167,4 +172,13 @@
 
 .line-grap-y-axis-label p {
   height: 16px;
+}
+
+#line-graph-x-axis {
+  display: flex;
+}
+
+#line-graph-x-axis p {
+  width: 62px;
+  text-align: right;
 }

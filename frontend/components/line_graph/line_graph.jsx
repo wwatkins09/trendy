@@ -18,15 +18,15 @@ class LineGraph extends React.Component {
   updateCanvas() {
     const canvas = this.refs.linegraph;
     const ctx = canvas.getContext('2d');
-    canvas.height = 600;
-    canvas.width = 800;
+    canvas.height = 500;
+    canvas.width = 806;
 
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       ctx.beginPath();
-      ctx.moveTo(0, 100*i + 1);
-      ctx.lineTo(800, 100*i + 1);
+      ctx.moveTo(0, 100*i);
+      ctx.lineTo(806, 100*i);
       ctx.stroke();
     }
 
@@ -42,10 +42,19 @@ class LineGraph extends React.Component {
       </span>
     });
 
+    const xAxis = Array(13).fill(null).map((el, idx) => {
+      return (<p key={idx}>day</p>)
+    });
+
     return (
       <div id="line-graph-container">
-        <span id="line-graph-y-axis">{yAxis}</span>
-        <canvas ref="linegraph" id="line-graph" />
+        <content id="line-graph-upper">
+          <span id="line-graph-y-axis">{yAxis}</span>
+          <canvas ref="linegraph" id="line-graph" />
+        </content>
+        <span id="line-graph-x-axis">
+          {xAxis}
+        </span>
       </div>
     )
   }
