@@ -1,5 +1,9 @@
 import React from 'react';
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 class LineGraph extends React.Component {
 
   constructor(props) {
@@ -43,7 +47,9 @@ class LineGraph extends React.Component {
     });
 
     const xAxis = Array(13).fill(null).map((el, idx) => {
-      return (<p key={idx}>day</p>)
+      const day = new Date(today.getTime() - ((12 - idx) * 86400000 * 7));
+      const content = (day.getDate() / 7 <= 1) ? months[day.getMonth()] : day.getDate();
+      return (<p key={idx}>{content}</p>)
     });
 
     return (
