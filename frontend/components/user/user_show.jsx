@@ -50,11 +50,11 @@ class UserShow extends React.Component {
     let categoryForm;
     if (this.state.formToggled) {
       categoryForm = (
-        <form onSubmit={this.handleSubmit}>
+        <form id="new-category-form" onSubmit={this.handleSubmit}>
           <label>Name
             <input placeholder="ex: exercise" onChange={this.handleChange} value={this.state.category.name}></input>
           </label>
-          <button>Add category</button>
+          <button className="add-category-button">Add category</button>
         </form>
       );
     }
@@ -63,7 +63,7 @@ class UserShow extends React.Component {
       <div>
         <h1>Welcome, {this.props.currentUser.email}</h1>
         <CategoryIndexContainer />
-        <button onClick={this.toggleForm}>Add category</button>
+        <button className="add-category-button" onClick={this.toggleForm}>Add category</button>
         {categoryForm}
       </div>
     )

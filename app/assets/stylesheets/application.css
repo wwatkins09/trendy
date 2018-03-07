@@ -192,3 +192,24 @@
 #line-graph-title {
   margin-bottom: 0;
 }
+
+#new-category-form {
+  margin-top: 10px;
+}
+
+#new-category-form input {
+  margin: 0 10px;
+}
+
+.add-category-button {
+  border: 1px solid black;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.add-category-button:hover {
+  cursor: pointer;
+  color: blue;
+  border: 1px solid blue;
+}
