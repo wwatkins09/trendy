@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import {RECEIVE_CATEGORIES, RECEIVE_CATEGORY} from '../actions/category_actions';
 import {RECEIVE_EVENT, REMOVE_EVENT} from '../actions/event_actions';
+import {REMOVE_CURRENT_USER} from '../actions/session_actions';
 
 const categoriesReducer = (oldState = {}, action) => {
   let newState;
@@ -16,6 +17,8 @@ const categoriesReducer = (oldState = {}, action) => {
       newState = merge({}, oldState);
       newState[action.payload.category.id].eventIds = newState[action.payload.category.id].eventIds.filter((eventId) => eventId !== action.payload.event.id);
       return newState;
+    case REMOVE_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

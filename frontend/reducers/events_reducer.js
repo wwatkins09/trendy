@@ -1,5 +1,6 @@
 import merge from 'lodash/merge';
 import {RECEIVE_EVENTS, RECEIVE_EVENT, REMOVE_EVENT} from '../actions/event_actions';
+import {REMOVE_CURRENT_USER} from '../actions/session_actions';
 
 const eventsReducer = (oldState = {}, action) => {
   let newState;
@@ -12,6 +13,8 @@ const eventsReducer = (oldState = {}, action) => {
       newState = merge({}, oldState);
       delete newState[action.payload.event.id];
       return newState;
+    case REMOVE_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }
