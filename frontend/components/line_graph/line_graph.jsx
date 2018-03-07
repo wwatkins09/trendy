@@ -6,6 +6,12 @@ class LineGraph extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    if (!this.props.category.id) {
+      this.props.fetchCategoryById(this.props.categoryId);
+    }
+  }
+
   render() {
     return (
       <div>

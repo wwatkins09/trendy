@@ -4,10 +4,11 @@ import LineGraph from './line_graph';
 import {fetchCategoryById} from '../../actions/category_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const categoryId = ownProps.match.params.categoryId;
+  const categoryId = parseInt(ownProps.match.params.categoryId);
+  const category = state.categories[categoryId] || {name: ''}
   return {
     categoryId,
-    category: state.categories[categoryId]
+    category
   };
 };
 
