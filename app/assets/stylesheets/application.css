@@ -213,3 +213,17 @@
   color: blue;
   border: 1px solid blue;
 }
+
+#category-index-header {
+  width: 50px;
+  height: 20px;
+}
+
+#category-index-header span {
+  display: flex;
+  flex-direction: column;
+}
+
+#category-index-header p {
+  margin: 0;
+}
