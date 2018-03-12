@@ -1,5 +1,15 @@
 import React from 'react';
 
+Date.prototype.stdTimezoneOffset = function() {
+    var jan = new Date(this.getFullYear(), 0, 1);
+    var jul = new Date(this.getFullYear(), 6, 1);
+    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
+Date.prototype.dst = function() {
+  return this.getTimezoneOffset() < this.stdTimezoneOffset();
+}
+
 class EventIndexItem extends React.Component {
 
   constructor(props) {
@@ -17,8 +27,12 @@ class EventIndexItem extends React.Component {
     let content;
     let button;
     if (this.props.event) {
+      let timezoneOffset = new Date().getTimezoneOffset();
+      if (new Date().dst()) {
+        timezoneOffset += 60;
+      }
       content = (
-        <span>{new Date(this.props.event.date * 1000).toDateString()}</span>
+        <span>{new Date((this.props.event.date + (timezoneOffset*60)) * 1000).toDateString()}</span>
       );
       button = (
         <button className="event-delete-button" onClick={this.handleDelete}>Delete</button>

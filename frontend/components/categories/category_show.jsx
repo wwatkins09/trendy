@@ -5,6 +5,16 @@ import {Link} from 'react-router-dom';
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
+Date.prototype.stdTimezoneOffset = function() {
+    var jan = new Date(this.getFullYear(), 0, 1);
+    var jul = new Date(this.getFullYear(), 6, 1);
+    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
+Date.prototype.dst = function() {
+  return this.getTimezoneOffset() < this.stdTimezoneOffset();
+}
+
 class CategoryShow extends React.Component {
 
   constructor(props) {
@@ -45,7 +55,11 @@ class CategoryShow extends React.Component {
   }
 
   formatDate(date) {
-    const dateString = new Date(date * 1000);
+    let timezoneOffset = new Date().getTimezoneOffset();
+    if (new Date().dst) {
+      timezoneOffset += 60;
+    }
+    const dateString = new Date((date + timezoneOffset*60) * 1000);
     const year = dateString.getFullYear().toString();
     let month;
     if (dateString.getMonth() + 1 < 10) {
@@ -63,8 +77,9 @@ class CategoryShow extends React.Component {
   }
 
   handleDateChange(event) {
-    const timezoneOffset = new Date().getTimezoneOffset();
-    this.setState({date: new Date(event.target.value).getTime() / 1000 + (timezoneOffset*60)})
+    const dateString = event.target.value;
+    const date = Date.UTC(parseInt(dateString.slice(0, 4)), (parseInt(dateString.slice(5, 7)) - 1), parseInt(dateString.slice(8))) / 1000;
+    this.setState({date})
   }
 
   render() {
