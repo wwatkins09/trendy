@@ -49,8 +49,8 @@ class CategoryIndex extends React.Component {
       <table>
         <thead>
           <tr id="category-index-header-row">
-            <th className="category-index-header"></th>
             <th className="category-index-header">Category</th>
+            <th className="category-index-header">Status</th>
             {headers}
           </tr>
         </thead>

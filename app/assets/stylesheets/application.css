@@ -219,11 +219,15 @@
   vertical-align: text-top;
 }
 
-#category-index-header span {
+.category-index-header span {
   display: flex;
   flex-direction: column;
 }
 
-#category-index-header p {
+.category-index-header p {
   margin: 0;
+}
+
+.category-index-row td {
+  text-align: center;
 }

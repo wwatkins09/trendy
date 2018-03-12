@@ -49,9 +49,9 @@ class CategoryIndexItem extends React.Component {
     })
 
     return (
-      <tr>
-        <td><canvas ref="circle" className="five-day-circle"/></td>
+      <tr className="category-index-row">
         <td><Link to={`/categories/${this.props.category.id}`}>{this.props.category.name}</Link></td>
+        <td><canvas ref="circle" className="five-day-circle"/></td>
         {days}
       </tr>
     );
