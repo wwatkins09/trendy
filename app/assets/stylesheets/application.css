@@ -235,3 +235,8 @@
 #new-event-errors {
   align-items: flex-start;
 }
+
+#category-show {
+  display: flex;
+  flex-direction: column;
+}

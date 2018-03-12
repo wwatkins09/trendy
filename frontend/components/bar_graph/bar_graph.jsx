@@ -13,3 +13,5 @@ class BarGraph extends React.Component {
     );
   }
 }
+
+export default BarGraph;

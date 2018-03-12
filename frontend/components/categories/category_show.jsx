@@ -89,7 +89,7 @@ class CategoryShow extends React.Component {
     })
 
     return (
-      <div>
+      <div id="category-show">
         <h3>{this.props.category.name}</h3>
         <form id="new-trend-form" onSubmit={this.handleSubmit}>
           <label>Date
@@ -111,6 +111,7 @@ class CategoryShow extends React.Component {
         </ul>
         <EventIndexContainer categoryId={this.props.categoryId}/>
         <Link to={`/categories/${this.props.categoryId}/line-graph`}>Line graph</Link>
+        <Link to={`/categories/${this.props.categoryId}/bar-graph`}>Bar graph</Link>
       </div>
     );
   }
