@@ -9,7 +9,7 @@ class CategoryShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {categoryId: props.match.params.categoryId, date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0};
+    this.state = {categoryId: props.match.params.categoryId, date: today.getTime() / 1000, quantity: 0, quality: 1, duration: 0};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -37,7 +37,7 @@ class CategoryShow extends React.Component {
     this.props.createEvent(this.state).then(() => {
       this.props.clearErrors();
     });
-    this.setState({date: today.getTime() / 1000, quantity: 0, quality: 0, duration: 0})
+    this.setState({date: today.getTime() / 1000, quantity: 0, quality: 1, duration: 0})
   }
 
   createDate(offset) {
@@ -91,7 +91,7 @@ class CategoryShow extends React.Component {
           </label>
             <button>Create new event</button>
         </form>
-        <ul className="errors-list">
+        <ul className="errors-list" id="new-event-errors">
           {errorsList}
         </ul>
         <EventIndexContainer categoryId={this.props.categoryId}/>
