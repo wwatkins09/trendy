@@ -58,13 +58,22 @@ class LineGraph extends React.Component {
 
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 2;
+    let previousCenter;
     this.state.weeklyEvents.forEach((week, idx) => {
       const originX = (500 / 13 * idx) + 25;
       const originY = 525 - ((week.length / 7) * 500);
+      if (previousCenter) {
+        ctx.beginPath();
+        ctx.moveTo(previousCenter[0], previousCenter[1]);
+        ctx.lineTo(originX, originY);
+        ctx.closePath();
+        ctx.stroke();
+      }
       ctx.beginPath();
       ctx.arc(originX, originY, 5, 0, (Math.PI * 2), false);
       ctx.closePath();
       ctx.stroke();
+      previousCenter = [originX, originY];
     })
 
   }
