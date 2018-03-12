@@ -48,6 +48,11 @@ class LineGraph extends React.Component {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(1, 25);
+    ctx.lineTo(1, 525);
+    ctx.stroke();
+    ctx.closePath();
     for (let i = 0; i < 6; i++) {
       ctx.beginPath();
       ctx.moveTo(0, 100*i + 25);
