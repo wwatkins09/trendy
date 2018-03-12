@@ -27,7 +27,7 @@ class CategoryIndex extends React.Component {
     const headers = new Array(5).fill(null).map((el, idx) => {
       const day = this.createDate(idx);
       return (
-        <th id="category-index-header" key={idx}>
+        <th className="category-index-header" key={idx}>
           <span>
             <p>
               {dayArr[day.getDay()]}
@@ -49,8 +49,8 @@ class CategoryIndex extends React.Component {
       <table>
         <thead>
           <tr id="category-index-header-row">
-            <th></th>
-            <th>Category</th>
+            <th className="category-index-header"></th>
+            <th className="category-index-header">Category</th>
             {headers}
           </tr>
         </thead>
