@@ -279,12 +279,13 @@
 
 #bar-graph-x-axis {
   display: flex;
-  margin-left: 44px;
+  margin-left: 52px;
 }
 
 #bar-graph-x-axis p {
-  width: 38.46px;
-  text-align: right;
+  width: 38.8px;
+  text-align: center;
+  margin: 0;
 }
 
 #bar-graph-title {
